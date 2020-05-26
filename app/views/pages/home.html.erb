@@ -1,24 +1,34 @@
-<h1>Home page</h1>
-
-<% if current_user %>
-<section class="hero is-medium is-dark home-hero has-text-centered">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Welcome <%= post.user.username %>!
-        </h1>
-        <h2 class="subtitle">
-          Host your own workouts and share your results together.
-        </h2>
-        <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-<% else %>
+<div class="container">
+  <!-- Navigation -->
+  <header> <a href="#home">
+    <h4 class="logo">HOME</h4>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#about">ABOUT</a></li>
+        <li> <a href="#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Footer Section -->
+    <div class="container">
+        <% if current_user %>
+        <h1><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></h1>
+        <% else %>
         <%= link_to "Sign Up", new_user_registration_path %>
         <br>
         <%= link_to 'Sign in', new_user_session_path %>
         <br>
-        </div>
+        <% end %>
+        <br>
+        <h1><%= link_to 'Posts', posts_path %></h1>
     </div>
+  <section class="footer_banner" id="contact">
+    <h2 class="hidden">Footer Banner Section </h2>
+    <p class="hero_header">FOR QUESTIONS &amp; COMPLAINTS</p>
+    <div class="button">CONTACT</div>
   </section>
-<% end %>
-
-<%= link_to 'Posts', posts_path %>
+  <!-- Copyrights Section -->
+  <div class="copyright">&copy;2020- <light>HP</light>
+    </div>
+</div>
