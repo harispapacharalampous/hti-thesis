@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   resources :posts
   root to: 'pages#home'
   get "/pages/*page" => "pages#show"

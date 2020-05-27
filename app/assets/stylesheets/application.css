@@ -14,6 +14,7 @@
  *= require_self
  */
 
+
 /* custom css*/
 *= require simple_calendar
 
@@ -29,6 +30,8 @@
 }
 .center {margin-left: auto; margin-right: auto; text-align: center;}
 
+
+/*generated css*/
 @charset "UTF-8";
 /* Body */
 body {
