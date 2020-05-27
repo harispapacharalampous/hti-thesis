@@ -1,7 +1,6 @@
+<!-- main content Section -->
 <div class="container">
-
-  <!-- main content Section -->
-    <div class="container">
+        <%= render "layouts/header" %>
         <% if current_user %>
         <h1><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></h1>
         <% else %>
@@ -12,5 +11,5 @@
         <% end %>
         <br>
         <h1><%= link_to 'Posts', posts_path %></h1>
-    </div>
 </div>
+
