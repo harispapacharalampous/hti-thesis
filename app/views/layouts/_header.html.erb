@@ -1,9 +1,10 @@
 <!-- Navigation -->
   <header> <a href="#home">
-    <h4 class="logo">HOME</h4>
+    <h4 class="logo"><%= link_to "HOME", root_path %></h4>
     </a>
     <nav>
       <ul>
+        <li> <%= link_to "POSTS", posts_path %></li>
         <li><a href="#about">ABOUT</a></li>
         <li> <a href="#contact">CONTACT</a></li>
       </ul>
