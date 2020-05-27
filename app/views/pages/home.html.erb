@@ -1,16 +1,6 @@
 <div class="container">
-  <!-- Navigation -->
-  <header> <a href="#home">
-    <h4 class="logo">HOME</h4>
-    </a>
-    <nav>
-      <ul>
-        <li><a href="#about">ABOUT</a></li>
-        <li> <a href="#contact">CONTACT</a></li>
-      </ul>
-    </nav>
-  </header>
-  <!-- Footer Section -->
+
+  <!-- main content Section -->
     <div class="container">
         <% if current_user %>
         <h1><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></h1>
@@ -22,13 +12,5 @@
         <% end %>
         <br>
         <h1><%= link_to 'Posts', posts_path %></h1>
-    </div>
-  <section class="footer_banner" id="contact">
-    <h2 class="hidden">Footer Banner Section </h2>
-    <p class="hero_header">FOR QUESTIONS &amp; COMPLAINTS</p>
-    <div class="button">CONTACT</div>
-  </section>
-  <!-- Copyrights Section -->
-  <div class="copyright">&copy;2020- <light>HP</light>
     </div>
 </div>
