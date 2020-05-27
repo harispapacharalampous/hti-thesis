@@ -13,6 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+/* custom css*/
+.newbtn{
+    background-color: lightsteelblue;
+}
+.newpost_banner {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-image: url(../images/pattern.png);
+	background-repeat: repeat;
+    width: 50%;
+}
+.center {margin-left: auto; margin-right: auto; text-align: center;}
+
 @charset "UTF-8";
 /* Body */
 body {
