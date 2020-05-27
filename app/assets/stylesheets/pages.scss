@@ -2,9 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @charset "UTF-8";
+// custom css
+table thead {
+    font-size: 16px;
+    font-family: verdana, arial, helvetica, sans-serif;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+
+table body {
+    font-size: 14px;
+    font-family: verdana, arial, helvetica, sans-serif;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+
+h1, h2{
+    font-family: verdana, arial, helvetica, sans-serif;
+	letter-spacing: 2px;
+	font-weight: bold;
+    text-decoration: none
+}
+
 /* Body */
 body {
-	font-family: source-sans-pro;
+	font-family: verdana, arial, helvetica, sans-serif;
 	background-color: #f2f2f2;
 	margin-top: 0px;
 	margin-right: 0px;
@@ -65,6 +87,7 @@ ul li a {
 }
 ul li:hover a {
 	color: #2C9AB7;
+    text-decoration: none;
 }
 .hero_header {
 	color: #FFFFFF;
