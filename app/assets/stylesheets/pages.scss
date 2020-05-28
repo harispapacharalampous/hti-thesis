@@ -33,7 +33,10 @@ h1, h2{
     border-collapse: collapse;
     box-sizing: border-box;
     max-width: 100%;
-    width: 100%;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
 
   tr {
@@ -72,7 +75,8 @@ h1, h2{
   }
 
   .day {
-    height: 80px;
+    height: 90px;
+    width: 90px;
   }
 
   .wday-0 {}
@@ -87,7 +91,9 @@ h1, h2{
     background: #FFFFC0
   }
 
-  .past {}
+  .past {
+      background: lightblue;
+    }
   .future {}
 
   .start-date {}
@@ -101,6 +107,20 @@ h1, h2{
   .current-month {}
 
   .has-events {}
+
+    .calendar-heading{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .calendar-title{
+        font-size: 30px;
+        font-weight: bold;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .prevnext{
+        font-size: 30px;
+    }
 }
 
 /* Body */
