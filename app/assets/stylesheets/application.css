@@ -18,8 +18,12 @@
 /* custom css*/
 *= require simple_calendar
 
+content {
+  min-height: 100%;
+}
+
 .newbtn{
-    background-color: lightsteelblue;
+    background-color: lavender;
 }
 .newpost_banner {
 	padding-top: 20px;
@@ -214,7 +218,9 @@ ul li:hover a {
 /* More info */
 footer {
 	background-color: #FFFFFF;
-	padding-bottom: 35px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
 }
 .footer_column {
 	width: 50%;

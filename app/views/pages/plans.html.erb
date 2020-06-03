@@ -1,8 +1,5 @@
 <div class="container center">
-
-    <%= render "layouts/header" %>
     <%= week_calendar number_of_weeks: 3 do |date| %>
         <%= date %>
     <% end %>
-     <%= render partial: "layouts/footer"%>
 </div>
