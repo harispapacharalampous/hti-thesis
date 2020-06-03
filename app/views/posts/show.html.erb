@@ -23,8 +23,12 @@
     <p>
       <strong>User:</strong>
       <%= @post.user.username %>
-        <br><strong>User email:</strong>
+        <br>
+      <strong>User email:</strong>
       <%= @post.user.email %>
+          <br>
+      <strong>User climit:</strong>
+      <%= @post.user.climit %>
     </p>
 
     <%= link_to 'Edit', edit_post_path(@post)%> |
