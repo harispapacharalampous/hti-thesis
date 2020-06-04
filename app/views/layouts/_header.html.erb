@@ -1,15 +1,30 @@
-<!-- Navigation -->
-  <header>
-      <div class="wrap">
-      <a href="#home">
-        <h4 class="logo"><%= link_to "HOME", root_path %></h4>
-        </a>
-        <nav>
-          <ul>
-            <li> <%= link_to "POSTS", posts_path %></li>
-            <li><%= link_to "PLANS", "/pages/plans" %></li>
-            <li> <a href="#contact">CONTACT</a></li>
-          </ul>
-        </nav>
-        </div>
-  </header>
+
+ <header>
+
+
+
+<!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">
+        <%= link_to "HOME", root_path %> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#"><%= link_to "POSTS", posts_path %> <span class="sr-only">(current)</span></a>
+        </li>
+
+         <li class="nav-item active">
+          <a class="nav-link" href="#"><%= link_to "PLANS", "/pages/plans" %> <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="#"><%= link_to "USER", edit_user_registration_path %><span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+</header>

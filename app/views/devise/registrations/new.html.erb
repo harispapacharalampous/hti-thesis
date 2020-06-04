@@ -26,6 +26,14 @@
     <%= f.text_field :climit, as: :integer, autofocus: true %>
   </div>
 
+<div class="field">
+    <%= f.label :walkpref %>
+    <%= f.check_box :walkpref, as: :integer, autofocus: true %>
+    <%= f.label :commutepref %>
+    <%= f.check_box :commutepref, as: :integer, autofocus: true %>
+  </div>
+
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
