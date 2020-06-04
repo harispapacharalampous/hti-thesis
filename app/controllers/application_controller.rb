@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+before_action :configure_permitted_parameters, if: :devise_controller?
 
     def show
         render template: "pages/#{params[:page]}"
@@ -9,8 +10,9 @@ class ApplicationController < ActionController::Base
    protected
 
         def configure_permitted_parameters
-            devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :climit) }
-            devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:climit, :email, :password, :current_password) }
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :climit, :wlimit])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:email, :password,:current_password, :climit, :wlimit])
+
         end
 
 end
