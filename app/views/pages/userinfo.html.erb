@@ -1,11 +1,46 @@
-     <div class="row">
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-  </div>
+<!--
+User Profile Sidebar by @keenthemes
+A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+Licensed under MIT
+-->
+
+<div class="container">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+                <div class="row justify-content-center">
+                    <div class="col-md-auto">
+                        <div class="justify-content-center profile-userpic">
+                            <img src="https://i.pinimg.com/originals/2c/7f/d4/2c7fd4e277d332cf993e93d98906dfd1.png" class="justify-content-center img-responsive" alt="supervillain">
+                        </div>
+                    </div>
+                </div>
+                <!-- END SIDEBAR USERPIC -->
+
+                <!-- SIDEBAR USER TITLE -->
+                <div class="row justify-content-center">
+                    <div class="profile-usertitle">
+                        <div class="justify-content-center profile-usertitle-name">
+                            MF  DOOM
+                        </div>
+                        <div class="profile-usertitle-job">
+                            Supervillain
+                        </div>
+                        <div class="profile-usertitle-name">
+                            <%= current_user.username %>
+                        </div>
+                    </div>
+                </div>
+                <!-- END SIDEBAR USER TITLE -->
+
+				<!-- SIDEBAR BUTTONS -->
+                <div class="row justify-content-center">
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm">Follow</button>
+					<button type="button" class="btn btn-danger btn-sm">Message</button>
+				</div>
+                </div>
+				<!-- END SIDEBAR BUTTONS -->
+
+
+			</div>
+</div>

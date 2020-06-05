@@ -1,30 +1,15 @@
-
- <header>
-
+<header>
 
 
 <!-- Fixed navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">
-        <%= link_to "HOME", root_path %> </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#"><%= link_to "POSTS", posts_path %> <span class="sr-only">(current)</span></a>
-        </li>
+  <nav class="site-header sticky-top py-1">
+      <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="py-2 d-none d-md-inline-block" ><%= link_to "HOME", root_path %></a>
+        <a class="py-2 d-none d-md-inline-block" ><%= link_to('POSTS', posts_path ) %></a>
+        <a class="py-2 d-none d-md-inline-block" ><%= link_to("PLANS", "/pages/plans") %></a>
+        <a class="py-2 d-none d-md-inline-block" ><%= link_to("USER", "/pages/userinfo") %></a>
+        <a class="py-2 d-none d-md-inline-block" href="#"><%= link_to("EMPTY FEEDBACK") %></a>
+      </div>
+    </nav>
 
-         <li class="nav-item active">
-          <a class="nav-link" href="#"><%= link_to "PLANS", "/pages/plans" %> <span class="sr-only">(current)</span></a>
-        </li>
-
-        <li class="nav-item active">
-          <a class="nav-link" href="#"><%= link_to "USER", edit_user_registration_path %><span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
-
-    </div>
-  </nav>
 </header>
