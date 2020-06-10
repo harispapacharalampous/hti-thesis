@@ -3,6 +3,7 @@ class PostsController < ApplicationController
     before_action :authenticate_user!, except: [:show, :index]
   # GET /posts
   # GET /posts.json
+
   def index
     @posts = Post.all
   end
@@ -70,6 +71,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body, :affect,  :entertainment)
+      params.require(:post).permit(:title, :body, :affect,  :entertainment, :created_at)
     end
 end
