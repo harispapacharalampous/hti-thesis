@@ -47,9 +47,11 @@ Licensed under MIT
                         <script src="https://www.gstatic.com/charts/loader.js"></script>
                         <script src="chartkick.js"></script>
                         <%= javascript_include_tag "//www.gstatic.com/charts/loader.js", "chartkick" %>
+                        <!-- chart for posts -->
+                        <%= line_chart Post.group(:affect, :created_at).count , id: "post-chart", width: "800px", height: "800px", min: "-5", max: "5"%>
 
-                        <%= line_chart Post.group(:entertainment).count , id: "users-chart", width: "800px", height: "500px", xmin: "2020-01-06", xman: "2020-30-06"%>
-                        <%= pie_chart Post.group(:affect).count %>
+                        <%= line_chart Post.group_by_month(:created_at).count %>
+
                     </div>
                 </div>
 			</div>
