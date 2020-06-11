@@ -1,5 +1,21 @@
-<div class="container center">
-    <%= week_calendar number_of_weeks: 3 do |date| %>
-        <%= date %>
-    <% end %>
-</div>
+<% if current_user %>
+    <div class="container center">
+        <%= week_calendar number_of_weeks: 3 do |date| %>
+            <%= date %>
+        <% end %>
+    </div>
+<% else %>
+        <div style="margin-top: 20px;margin-bottom: 20px;">
+             <div class="row justify-content-center">
+                ** login to view plan **
+            </div>
+            <div class="row justify-content-center">
+                <div class="profile-userbuttons" style="margin-right: 20px;">
+                    <a href="<%= new_user_registration_path %>"><button type="button" class="btn btn-success btn-lg"> SIGN UP </button></a>
+                </div>
+                <div class="profile-userbuttons">
+                    <a href="<%= new_user_session_path %>"><button type="button" class="btn btn-success btn-lg"> SIGN IN </button></a>
+                </div>
+            </div>
+        </div>
+<% end %>
