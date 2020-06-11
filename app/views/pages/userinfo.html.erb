@@ -16,27 +16,37 @@ Licensed under MIT
                 <!-- END SIDEBAR USERPIC -->
 
                 <!-- SIDEBAR USER TITLE -->
-                <div class="row justify-content-center">
-                    <div class="profile-usertitle">
-                        <div class="justify-content-center profile-usertitle-name">
-                            MF  DOOM
-                        </div>
-                        <div class="profile-usertitle-job">
-                            Supervillain
-                        </div>
-                        <div class="profile-usertitle-name">
-                            <%= current_user.username %>
+                <% if current_user %>
+                    <div class="row justify-content-center">
+                        <div class="profile-usertitle">
+                            <div class="justify-content-center profile-usertitle-name">
+                                MF  DOOM
+                            </div>
+                            <div class="profile-usertitle-job">
+                                Supervillain
+                            </div>
+                            <div class="profile-usertitle-name">
+                                <%= current_user.username %>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- END SIDEBAR USER TITLE -->
+                    <!-- END SIDEBAR USER TITLE -->
 
 				<!-- SIDEBAR BUTTONS -->
-                <div class="row justify-content-center">
-				<div class="profile-userbuttons">
-					<button type="button" class="btn btn-danger btn-sm">SIGN OUT</button>
-				</div>
-                </div>
+                    <div class="row justify-content-center">
+                    <div class="profile-userbuttons">
+                        <button type="button" class="btn btn-danger btn-sm">SIGN OUT</button>
+                    </div>
+                    </div>
+                <% else %>
+                    <div style="margin-top: 20px;margin-bottom: 20px;">
+                    <div class="row justify-content-center">
+                    <div class="profile-userbuttons">
+                        <a href="<%= new_user_registration_path %>"><button type="button" class="btn btn-success btn-lg"> SIGN UP </button></a>
+                    </div>
+                    </div>
+                    </div>
+                <% end %>
 				<!-- END SIDEBAR BUTTONS -->
 
 				<!-- FEEDBACK SECTION -->
@@ -47,12 +57,17 @@ Licensed under MIT
                         <script src="https://www.gstatic.com/charts/loader.js"></script>
                         <script src="chartkick.js"></script>
                         <%= javascript_include_tag "//www.gstatic.com/charts/loader.js", "chartkick" %>
-                        <!-- chart for posts -->
-                        <%= line_chart Post.all.pluck("created_at, affect"), min:"6", max:"-6", xmin:"2020-01-01", xmax: "2020-09-01" %>
-                         <div id="line" style="height: 500px;width:900px;"></div>
-                            <script>
-                              new Chartkick.LineChart("line", {"2013-02-10":3,"2013-02-11":2,"2013-02-12":3,"2013-02-13":2,"2013-02-14":-1,"2013-02-15":2,"2013-02-16":0,"2013-02-17":0,"2013-02-18":0,"2013-02-19":-2,"2013-02-20":2,"2013-02-21":-2,"2013-02-22":3,"2013-02-23":1,"2013-02-24":-2,"2013-02-25":1,"2013-02-26":3,"2013-02-27":2,"2013-02-28":3,"2013-03-01":2,"2013-03-02":2});
-                            </script>
+                        <% if current_user %>
+                            <!-- chart for posts -->
+                            <%= line_chart current_user.posts.all.pluck("created_at, affect"),xmin:"2020-01-01", xmax: "2020-09-01", height: "500px",width:"900px" %>
+                            <%= line_chart current_user.posts.all.pluck("created_at, entertainment"),xmin:"2020-01-01", xmax: "2020-09-01", colors: ["#b00"], height: "500px",width:"900px" %>
+                             <div id="line" style="height: 500px;width:900px;"></div>
+                                <script>
+                                  new Chartkick.LineChart("line", {"2013-02-10":3,"2013-02-11":2,"2013-02-12":3,"2013-02-13":2,"2013-02-14":-1,"2013-02-15":2,"2013-02-16":0,"2013-02-17":0,"2013-02-18":0,"2013-02-19":-2,"2013-02-20":2,"2013-02-21":-2,"2013-02-22":3,"2013-02-23":1,"2013-02-24":-2,"2013-02-25":1,"2013-02-26":3,"2013-02-27":2,"2013-02-28":3,"2013-03-01":2,"2013-03-02":2});
+                                </script>
+                        <% else %>
+                            **login to see graphs**
+                        <% end %>
                     </div>
                 </div>
 			</div>

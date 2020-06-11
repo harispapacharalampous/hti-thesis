@@ -19,9 +19,13 @@
       <strong>Entertainment:</strong>
       <%= @post.entertainment %>
     </p>
+    <p>
+      <strong>Created at:</strong>
+      <%= @post.created_at.day %> / <%= @post.created_at.month %> / <%= @post.created_at.year %>
+    </p>
 
     <p>
-      <strong>User:</strong>
+      <strong>User name:</strong>
       <%= @post.user.username %>
         <br>
       <strong>User email:</strong>
