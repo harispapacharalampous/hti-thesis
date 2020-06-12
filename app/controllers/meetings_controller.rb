@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
-
+    before_action :authenticate_user!, except: [:show, :index]
   # GET /meetings
   # GET /meetings.json
   def index
@@ -69,6 +69,6 @@ class MeetingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def meeting_params
-      params.require(:meeting).permit(:name, :activitytype, :start_time, :end_time)
+      params.require(:meeting).permit(:name, :activitytype, :start_time, :end_time, :user_id)
     end
 end

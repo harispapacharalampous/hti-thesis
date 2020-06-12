@@ -1,6 +1,6 @@
 <% if current_user %>
     <div class="container center">
-        <%= week_calendar number_of_weeks: 3, events: Meeting.all do |date, meetings| %>
+        <%= week_calendar number_of_weeks: 2, events: current_user.meetings.all do |date, meetings| %>
             <%= date %>
             <% meetings.each do |meeting| %>
                 <div>
