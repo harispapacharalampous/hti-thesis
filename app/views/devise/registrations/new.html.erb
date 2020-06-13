@@ -4,10 +4,10 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-
+    <br>
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -15,28 +15,36 @@
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
-
+    <br>
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-
+    <br>
   <div class="field">
-    <%= f.label :climit %><br />
+    <%= f.label "Coffee limit "%>
     <%= f.text_field :climit, as: :integer, autofocus: true %>
   </div>
-
-<div class="field">
-    <%= f.label :walkpref %>
-    <%= f.check_box :walkpref, as: :integer, autofocus: true %>
+    <br>
+    <div class="field">
+    <%= f.label "Water limit "%>
+    <%= f.text_field :wlimit, as: :integer, autofocus: true %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.label :walkpref %>
+        <%= f.check_box :walkpref, as: :integer, autofocus: true %>
+    </div>
+    <br>
+    <div class="field">
     <%= f.label :commutepref %>
     <%= f.check_box :commutepref, as: :integer, autofocus: true %>
   </div>
-
+    <br>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-
+<br>
 <%= render "devise/shared/links" %>
