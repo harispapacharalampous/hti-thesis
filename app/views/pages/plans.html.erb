@@ -1,10 +1,14 @@
 <% if current_user %>
-    <div class="container center">
+    <div class="center">
         <%= week_calendar number_of_weeks: 2, events: current_user.meetings.all do |date, meetings| %>
             <%= date %>
             <% meetings.each do |meeting| %>
                 <div>
-                  <%= meeting.name %>
+                    <% if current_user.walkpref == 1 %>
+                        <% if meeting.activitytype == 1 %>
+                            <%= meeting.name %>
+                        <% end %>
+                    <% end %>
                 </div>
             <% end %>
         <% end %>

@@ -24,7 +24,10 @@ class MeetingsController < ApplicationController
   # POST /meetings
   # POST /meetings.json
   def create
-    @meeting = Meeting.new(meeting_params)
+      @meeting = Meeting.new(meeting_params)
+      if (@meeting[:activitytype] == 1)
+          @meeting[:name] = "RUN"
+      end
 
     respond_to do |format|
       if @meeting.save
