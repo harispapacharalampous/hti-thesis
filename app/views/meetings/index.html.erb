@@ -14,17 +14,36 @@
   </thead>
 
   <tbody>
-    <% @meetings.each do |meeting| %>
-      <tr>
-        <td><%= meeting.name %></td>
-        <td><%= meeting.activitytype %></td>
-        <td><%= meeting.start_time %></td>
-        <td><%= meeting.end_time %></td>
-        <td><%= link_to 'Show', meeting %></td>
-        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+      <% if current_user && current_user.admin %>
+      <% @meetings.each do |meeting| %>
+          <tr>
+            <td><%= meeting.name %></td>
+            <td><%= meeting.activitytype %></td>
+            <td><%= meeting.start_time %></td>
+            <td><%= meeting.end_time %></td>
+            <td><%= link_to 'Show', meeting %></td>
+              <% if current_user && current_user.admin %>
+                <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+                <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
+          </tr>
+        <% end %>
+      <% else%>
+        <% current_user.meetings.each do |meeting| %>
+          <tr>
+            <td><%= meeting.name %></td>
+            <td><%= meeting.activitytype %></td>
+            <td><%= meeting.start_time %></td>
+            <td><%= meeting.end_time %></td>
+            <td><%= link_to 'Show', meeting %></td>
+              <% if current_user && current_user.admin %>
+                <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+                <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
+          </tr>
+        <% end %>
+      <% end%>
+
   </tbody>
 </table>
 

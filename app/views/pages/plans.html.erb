@@ -4,11 +4,12 @@
             <%= date %>
             <% meetings.each do |meeting| %>
                 <div>
-                    <% if current_user.walkpref == 1 %>
-                        <% if meeting.activitytype == 1 %>
+                    <!-- commented out the filtering to check the populate_meetings func -->
+                    <%# if current_user.walkpref == 1 %>
+                        <%# if meeting.activitytype == 1 %>
                             <%= meeting.name %>
-                        <% end %>
-                    <% end %>
+                        <%# end %>
+                    <%# end %>
                 </div>
             <% end %>
         <% end %>
