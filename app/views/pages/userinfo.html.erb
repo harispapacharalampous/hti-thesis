@@ -61,10 +61,13 @@ Licensed under MIT
                         <script src="chartkick.js"></script>
                         <%= javascript_include_tag "//www.gstatic.com/charts/loader.js", "chartkick" %>
                         <% if current_user %>
-                            <!-- chart for posts -->
-                            <%= line_chart current_user.posts.all.pluck("created_at, affect"),xmin:"2020-01-01", xmax: "2020-09-01", height: "500px",width:"900px" %>
-                            <%= line_chart current_user.posts.all.pluck("created_at, entertainment"),xmin:"2020-01-01", xmax: "2020-09-01", colors: ["#b00"], height: "500px",width:"900px" %>
-
+                            <!-- chart #1 for posts -->
+                            <p class="h5">Affect trend line:</p>
+                            <%= line_chart current_user.posts.all.pluck("created_at, affect"),xmin:"2020-01-01", xmax: "2021-01-01", height: "500px",width:"900px" %>
+                            <br>
+                            <!-- chart #2 for posts -->
+                            <p class="h5">Entertainment trend line:</p>
+                            <%= line_chart current_user.posts.all.pluck("created_at, entertainment"),xmin:"2020-01-01", xmax: "2021-01-01", colors: ["#b00"], height: "500px",width:"900px" %>
                         <% else %>
                             **login to see graphs**
                         <% end %>
