@@ -5,11 +5,17 @@
             <% meetings.each do |meeting| %>
                 <div>
                     <!-- commented out the filtering to check the populate_meetings func -->
-                    <%# if current_user.walkpref == 1 %>
-                        <%# if meeting.activitytype == 1 %>
+                    <% if current_user.walkpref == 1 %>
+                        <% if meeting.activitytype == 1 %>
                             <%= meeting.name %>
-                        <%# end %>
-                    <%# end %>
+                        <% end %>
+                    <% end %>
+                    <% if current_user.commutepref == 1 %>
+                        <% if meeting.activitytype == 2 %>
+                            <%= meeting.name %>
+                        <% end %>
+                    <% end %>
+                    <!-- end of filtering -->
                 </div>
             <% end %>
         <% end %>
