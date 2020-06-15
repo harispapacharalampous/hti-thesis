@@ -20,5 +20,14 @@
   <%= @meeting.end_time %>
 </p>
 
+<p>
+    <strong>User name:</strong>
+    <%= @meeting.user.username %>
+    <br>
+    <strong>User email:</strong>
+    <%= @meeting.user.email %>
+    <br>
+</p>
+
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
 <%= link_to 'Back', meetings_path %>
