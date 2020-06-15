@@ -16,7 +16,11 @@ class User < ApplicationRecord
 
     #callback function after login
     def after_database_authentication
-      #custom code here
+      #custom for coffee / water dailies
+        now = DateTime.now
+        if (now.beginning_of_day < now)
+            #it work but doe not change user var's
+        end
     end
 
     private
