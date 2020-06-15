@@ -2,6 +2,7 @@ class User < ApplicationRecord
     has_many :posts
     has_many :meetings
     has_many :coffees
+    has_many :waters
     #callback cue
     after_create :populate_meetings
     #callback cue

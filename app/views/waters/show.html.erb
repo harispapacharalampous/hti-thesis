@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Measurement type:</strong>
+  <%if @water.measurement_type ==1 %>
+            Cup
+    <% elsif @water.measurement_type == 2 %>
+            ml
+    <% end %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @water.quantity %>
+</p>
+
+
+<%= link_to 'Edit', edit_water_path(@water) %> |
+<%= link_to 'Back', waters_path %>
