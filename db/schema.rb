@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_135919) do
+ActiveRecord::Schema.define(version: 2020_06_15_151844) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -56,6 +56,10 @@ ActiveRecord::Schema.define(version: 2020_06_15_135919) do
     t.integer "climit"
     t.integer "walkpref"
     t.integer "commutepref"
+    t.integer "curr_w"
+    t.integer "curr_c"
+    t.string "past_ws"
+    t.string "past_cs"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

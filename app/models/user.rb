@@ -3,6 +3,8 @@ class User < ApplicationRecord
     has_many :meetings
     #callback cue
     after_create :populate_meetings
+    #callback cue
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,8 +14,13 @@ class User < ApplicationRecord
         return self.email.split('@')[0].capitalize
     end
 
+    #callback function after login
+    def after_database_authentication
+      #custom code here
+    end
+
     private
-        #callback cue'd function
+        #callback cue'd function after creating a new profile
         def populate_meetings
             d = DateTime.now
             #generate 5 events of  1h duration in 5 consecutive days type 1 (run)
