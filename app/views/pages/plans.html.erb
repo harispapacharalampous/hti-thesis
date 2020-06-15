@@ -21,11 +21,15 @@
             <% end %>
         <% end %>
     </div>
+    <!-- meetings button just for admin and test purposes-->
+    <% if current_user && current_user.admin %>
     <div class="center">
         <div class="profile-userbuttons">
             <a href="<%= meetings_path %>"><button type="button" class="btn btn-success btn-lg"> Meetings </button></a>
         </div>
     </div>
+    <% end %>
+    <!-- meetings button end -->
 <% else %>
         <!-- non signed in option -->
         <div style="margin-top: 20px;margin-bottom: 20px;">
