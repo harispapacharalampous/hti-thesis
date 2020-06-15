@@ -13,7 +13,15 @@
 
     <p>
       <strong>Entry type:</strong>
-        <%= @post.entry_type %>
+        <% if @post.entry_type == 1 %>
+            Walk
+        <% end %>
+        <% if @post.entry_type == 2 %>
+            Commute
+        <% end %>
+        <% if @post.entry_type == 3 %>
+            Other
+        <% end %>
     </p>
 
     <p>
@@ -36,8 +44,6 @@
       <strong>User email:</strong>
       <%= @post.user.email %>
           <br>
-      <strong>User climit:</strong>
-      <%= @post.user.climit %>
     </p>
 
     <%= link_to 'Edit', edit_post_path(@post)%> |
