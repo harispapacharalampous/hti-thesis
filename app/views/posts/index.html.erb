@@ -1,6 +1,7 @@
 <div class="container">
     <% if current_user %>
     <h1>Posts</h1>
+      <!-- green notice messages -->
       <p id="notice">
         <%= notice %>
       </p>
@@ -17,23 +18,38 @@
       </thead>
 
       <tbody>
-        <% current_user.posts.each do |post| %>
-          <tr>
-            <td><%= post.title %></td>
-            <td><%= post.body %></td>
-            <td><%= post.affect %></td>
-            <td><%= post.entertainment %></td>
-            <td><%= post.user.username %></td>
-            <td><%= link_to 'Show', post %></td>
-            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              <% if current_user && current_user.admin %>
-            <td><%= link_to 'Edit', edit_post_path(post) %></td>
-            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-              </td>
-              <% end %>
-          </tr>
-        <% end %>
+          <% if current_user && current_user.admin %>
+                <!-- admin view -->
+                <% @posts.each do |post| %>
+                  <tr>
+                    <td><%= post.title %></td>
+                    <td><%= post.body %></td>
+                    <td><%= post.affect %></td>
+                    <td><%= post.entertainment %></td>
+                    <td><%= post.user.username %></td>
+                    <td><%= link_to 'Show', post %></td>
+                    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+                    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+                <% end %>
+                <!-- admin view end -->
+          <% else %>
+                <!-- guest view -->
+                <% current_user.posts.each do |post| %>
+                  <tr>
+                    <td><%= post.title %></td>
+                    <td><%= post.body %></td>
+                    <td><%= post.affect %></td>
+                    <td><%= post.entertainment %></td>
+                    <td><%= post.user.username %></td>
+                    <td><%= link_to 'Show', post %></td>
+                    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+                  </tr>
+                <% end %>
+                <!-- guest view end -->
+          <% end %>
       </tbody>
+    <!-- new post button -->
     </table>
     <br>
     <section class="newpost_banner center" id="new post">
