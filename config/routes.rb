@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :coffees
   resources :meetings
   resources :events
   resources :posts

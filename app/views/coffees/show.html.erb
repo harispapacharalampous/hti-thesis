@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Measurement type:</strong>
+    <%if @coffee.measurement_type ==1 %>
+            Cup
+    <% elsif @coffee.measurement_type == 2 %>
+            ml
+    <% end %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @coffee.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_coffee_path(@coffee) %> |
+<%= link_to 'Back', coffees_path %>

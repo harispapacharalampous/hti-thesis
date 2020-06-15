@@ -1,0 +1,28 @@
+<%= form_with(model: coffee, local: true) do |form| %>
+  <% if coffee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(coffee.errors.count, "error") %> prohibited this coffee from being saved:</h2>
+
+      <ul>
+        <% coffee.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  <div class="field">
+    <%= form.label :measurement_type %>
+    <%= form.select :measurement_type ,  [['cup',1],['ml',2]] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

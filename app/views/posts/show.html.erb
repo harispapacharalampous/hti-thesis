@@ -15,11 +15,9 @@
       <strong>Entry type:</strong>
         <% if @post.entry_type == 1 %>
             Walk
-        <% end %>
-        <% if @post.entry_type == 2 %>
+        <% elsif @post.entry_type == 2 %>
             Commute
-        <% end %>
-        <% if @post.entry_type == 3 %>
+        <% elsif @post.entry_type == 3 %>
             Other
         <% end %>
     </p>
