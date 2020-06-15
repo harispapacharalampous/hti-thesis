@@ -1,26 +1,33 @@
 <% if current_user %>
+    <!-- Signed in view -->
     <div class="center">
         <%= week_calendar number_of_weeks: 2, events: current_user.meetings.all do |date, meetings| %>
             <%= date %>
             <% meetings.each do |meeting| %>
                 <div>
                     <!-- commented out the filtering to check the populate_meetings func -->
-                    <% if current_user.walkpref == 1 %>
-                        <% if meeting.activitytype == 1 %>
-                            <%= meeting.name %>
+                        <% if current_user.walkpref == 1 %>
+                            <% if meeting.activitytype == 1 %>
+                                <%= meeting.name %>
+                            <% end %>
                         <% end %>
-                    <% end %>
-                    <% if current_user.commutepref == 1 %>
-                        <% if meeting.activitytype == 2 %>
-                            <%= meeting.name %>
+                        <% if current_user.commutepref == 1 %>
+                            <% if meeting.activitytype == 2 %>
+                                <%= meeting.name %>
+                            <% end %>
                         <% end %>
-                    <% end %>
                     <!-- end of filtering -->
                 </div>
             <% end %>
         <% end %>
     </div>
+    <div class="center">
+        <div class="profile-userbuttons">
+            <a href="<%= meetings_path %>"><button type="button" class="btn btn-success btn-lg"> Meetings </button></a>
+        </div>
+    </div>
 <% else %>
+        <!-- non signed in option -->
         <div style="margin-top: 20px;margin-bottom: 20px;">
              <div class="row justify-content-center">
                 ** login to view plan **
