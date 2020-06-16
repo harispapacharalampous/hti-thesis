@@ -39,11 +39,11 @@ Licensed under MIT
                         <br> -->
                         <!-- need too show only today's-->
                         <p class="h6">Coffee drank today:
-                            <%= current_user.coffees.count %><b> / <%= current_user.climit %> cups </b>
+                            <%= current_user.coffees.select{|coffee| coffee.created_at.day == DateTime.now.day }.size %><b> / <%= current_user.climit %> cups </b>
                         </p>
                         <!-- need too show only today's-->
                         <p class="h6">Water drank today:
-                            <%= current_user.waters.count %><b> / <%= current_user.wlimit %> cups</b>
+                            <%= current_user.waters.select{|water| water.created_at.day == DateTime.now.day }.size %><b> / <%= current_user.wlimit %> cups</b>
                         </p>
                         <br>
                     </div>
@@ -81,7 +81,7 @@ Licensed under MIT
                         <% if current_user %>
                             <!-- chart #1 for posts -->
                             <p class="h5">Affect trend line:</p>
-                            <%= line_chart current_user.posts.all.pluck("created_at, affect"),xmin:"2020-01-01", xmax: "2021-01-01", height: "500px",width:"900px", colors: ["#100122"] %>
+                            <%= line_chart current_user.posts.all.pluck("created_at, affect"),xmin:"2020-01-01", xmax: "2021-01-01", height: "500px",width:"900px", colors: ["#f77e6e"] %>
                             <br>
                             <!-- chart #2 for posts -->
                             <p class="h5">Entertainment trend line:</p>
@@ -91,7 +91,7 @@ Licensed under MIT
                             <%= column_chart Coffee.group_by_day_of_week(:created_at, format: "%a").count, colors: ["#CC8566"], height: "300px",width:"900px" %>
                             <!-- chart #4 for posts -->
                             <p class="h5">Water cups per day:</p>
-                            <%= column_chart Water.group_by_day_of_week(:created_at, format: "%a").count, colors: ["#CDE4EE"], height: "300px",width:"900px" %>
+                            <%= column_chart Water.group_by_day_of_week(:created_at, format: "%a").count, colors: ["#87b4f8"], height: "300px",width:"900px" %>
                         <% else %>
                             **login to see graphs**
                         <% end %>

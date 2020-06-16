@@ -32,18 +32,23 @@
   </div>
     <br>
   <div class="field">
-    <%= f.label :climit %>
-    <%= f.text_field :climit, autofocus: true %>
+    <%= f.label "Maximun daily coffee intake :" %>
+    <%= f.number_field :climit, autofocus: true %>
   </div>
-<br>
-<div class="field">
+  <br>
+  <div class="field">
+    <%= f.label "Maximun daily water intake :" %>
+    <%= f.number_field :wlimit, autofocus: true %>
+  </div>
+  <br>
+  <div class="field">
     <%= f.label :walkpref %>
     <%= f.check_box :walkpref, as: :integer, autofocus: true %>
     <%= f.label :commutepref %>
     <%= f.check_box :commutepref, as: :integer, autofocus: true %>
   </div>
 
-    <br>
+  <br>
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
