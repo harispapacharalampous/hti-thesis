@@ -30,12 +30,12 @@ class User < ApplicationRecord
         def populate_meetings
             d = DateTime.now
             #generate 5 events of  1h duration in 5 consecutive days type 1 (run)
-            for b in 0..4 do
-                self.meetings.create( name: 'run ' + b.to_s, activitytype: '1', start_time: (d + b.day ).strftime("%Y-%m-%d %H:%M"), end_time: (d + b.day + 1.hour).strftime("%Y-%m-%d %H:%M"), user_id: self);
+            for b in 1..5 do
+                self.meetings.create( name: 'Walk ' + b.to_s, activitytype: '1', start_time: (d + (b+1).day ).strftime("%Y-%m-%d %H:%M"), end_time: (d + (b+1).day + 1.hour).strftime("%Y-%m-%d %H:%M"), user_id: self);
             end
             #generate 5 events of  1h duration in 5 consecutive days type 2 (commute)
-            for c in 0..4 do
-                self.meetings.create( name: 'commute ' + c.to_s, activitytype: '2', start_time: (d + c.day + 2.hour ).strftime("%Y-%m-%d %H:%M"), end_time: (d + c.day + 3.hour).strftime("%Y-%m-%d %H:%M"), user_id: self);
+            for c in 1..10 do
+                self.meetings.create( name: 'Commute ' + c.to_s, activitytype: '2', start_time: (d + c.day + 2.hour ).strftime("%Y-%m-%d %H:%M"), end_time: (d + c.day + 3.hour).strftime("%Y-%m-%d %H:%M"), user_id: self);
             end
 
         end

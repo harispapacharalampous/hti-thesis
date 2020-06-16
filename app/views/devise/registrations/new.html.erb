@@ -2,7 +2,7 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
+    <br>
   <div class="field">
     <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -32,12 +32,12 @@
   </div>
   <br>
     <div class="field">
-        <%= f.label :walkpref %>
+        <%= f.label "Would you like to do as walking:" %>
         <%= f.check_box :walkpref, as: :integer, autofocus: true %>
     </div>
     <br>
     <div class="field">
-    <%= f.label :commutepref %>
+    <%= f.label "Would you like to do as commuting:" %>
     <%= f.check_box :commutepref, as: :integer, autofocus: true %>
   </div>
     <br>
