@@ -35,9 +35,10 @@ class User < ApplicationRecord
                 self.meetings.create( name: 'Walk ' + b.to_s, activitytype: '1', start_time: (d + (b+1).day ).strftime("%Y-%m-%d %H:%M"), end_time: (d + (b+1).day + 1.hour).strftime("%Y-%m-%d %H:%M"), user_id: self);
             end
             #generate 5 events of  1h duration in 5 consecutive days type 2 (commute)
-            for c in 1..10 do
+            for c in 1..5 do
                 self.meetings.create( name: 'Commute ' + c.to_s, activitytype: '2', start_time: (d + c.day + 2.hour ).strftime("%Y-%m-%d %H:%M"), end_time: (d + c.day + 3.hour).strftime("%Y-%m-%d %H:%M"), user_id: self);
             end
 
         end
+
 end
