@@ -1,5 +1,15 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+    <!-- condition -->
+    <% if current_user.condition ==1 %>
+        condition: 1
+    <% elsif current_user.condition ==2 %>
+        condition: 2
+    <% elsif current_user.condition ==3 %>
+        condition: 3
+    <% elsif current_user.condition ==4 %>
+        condition: 4
+    <% end %>
+    <!-- condition -->
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
     <br>
@@ -39,11 +49,6 @@
   <div class="field">
     <%= f.label "Maximun daily water intake :" %>
     <%= f.number_field :wlimit, autofocus: true %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label "condition :" %>
-    <%= f.number_field :condition, autofocus: true %>
   </div>
   <br>
   <div class="field">
