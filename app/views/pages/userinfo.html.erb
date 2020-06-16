@@ -40,9 +40,9 @@ Licensed under MIT
                         <!-- need too show only today's-->
                         <p class="h6">Coffee drank today:
                             <%= current_user.coffees.select{|coffee| coffee.created_at.day == DateTime.now.day }.size %><b> / <%= current_user.climit %> cups </b>
-                            <div class="profile-userbuttons">
-                                <button type="button" class="btn btn-info btn-sm"><%= link_to "Add coffee" , method: Coffee.create(:measurement_type => '1', :quantity => '1', :user_id => current_user.id) %></button>
-                            </div>
+                            <!--<div class="profile-userbuttons">
+                                <button type="button" class="btn btn-info btn-sm"><#%= link_to "Add coffee" , method: Coffee.create(:measurement_type => '1', :quantity => '1', :user_id => current_user.id) %></button>
+                            </div>-->
                         </p>
                         <!-- need too show only today's-->
                         <p class="h6">Water drank today:
@@ -82,12 +82,16 @@ Licensed under MIT
                         <script src="chartkick.js"></script>
                         <%= javascript_include_tag "//www.gstatic.com/charts/loader.js", "chartkick" %>
                         <% if current_user %>
-
                             <!-- chart affect for posts -->
-                            <p class="h5">Affect trend line:</p>
-                            <%= line_chart current_user.posts.all.pluck("created_at, affect"),xmin:"2020-01-01", xmax: "2021-01-01", height: "500px",width:"900px", colors: ["#f77e6e"] %>
-                            <br>
-
+                            <% if current_user.condition == 3 %>
+                               <p class="h5">Affect trend line:</p>
+                                <%= line_chart current_user.posts.all.pluck("created_at, affect"),xmin:"2020-01-01", xmax: "2021-01-01", height: "500px",width:"900px", colors: ["#000"] %>
+                                <br>
+                            <% else %>
+                                <p class="h5">Affect trend line:</p>
+                                <%= line_chart current_user.posts.all.pluck("created_at, affect"),xmin:"2020-01-01", xmax: "2021-01-01", height: "500px",width:"900px", colors: ["#f77e6e"] %>
+                                <br>
+                            <% end %>
                             <!-- chart entertainment for posts -->
                             <p class="h5">Entertainment trend line:</p>
                             <%= line_chart current_user.posts.all.pluck("created_at, entertainment"),xmin:"2020-01-01", xmax: "2021-01-01", colors: ["#2CA"], height: "500px",width:"900px" %>
