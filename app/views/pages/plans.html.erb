@@ -8,12 +8,12 @@
                     <!-- commented out the filtering to check the populate_meetings func -->
                         <% if current_user.walkpref == 1 %>
                             <% if meeting.activitytype == 1 %>
-                                <%= link_to meeting.name,  edit_meeting_path( meeting.id ) %>
+                                <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %>
                             <% end %>
                         <% end %>
                         <% if current_user.commutepref == 1 %>
                             <% if meeting.activitytype == 2 %>
-                                <%= meeting.name %>
+                                <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %>
                             <% end %>
                         <% end %>
                     <!-- end of filtering -->
