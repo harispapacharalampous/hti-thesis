@@ -1,6 +1,8 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
     <!-- condition -->
-    <% if current_user.condition ==1 %>
+    <% if current_user.condition ==0 %>
+        condition: 0
+    <% elsif current_user.condition ==1 %>
         condition: 1
     <% elsif current_user.condition ==2 %>
         condition: 2
