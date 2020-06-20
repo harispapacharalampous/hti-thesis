@@ -5,9 +5,6 @@ class User < ApplicationRecord
     has_many :waters
     #callback cue
     after_create :populate_meetings
-    #callback cue
-    after_validation :comp_email
-
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -18,7 +15,8 @@ class User < ApplicationRecord
        RegMailer.reg_email(self).deliver
     end
 
-    def comp_email
+
+    def after_database_authentication
         if self.posts.count>=2
             RegMailer.comp_email(self).deliver
         end
@@ -26,15 +24,6 @@ class User < ApplicationRecord
 
     def username
         return self.email.split('@')[0].capitalize
-    end
-
-    #callback function after login
-    def after_database_authentication
-      #custom for coffee / water dailies
-        now = DateTime.now
-        if (now.beginning_of_day < now)
-            #it work but doe not change user var's
-        end
     end
 
     private
