@@ -6,12 +6,17 @@ class User < ApplicationRecord
     #callback cue
     after_create :populate_meetings
     #callback cue
+    after_create :reg_email
 
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+    def reg_email
+       RegMailer.reg_email(self).deliver
+    end
 
     def username
         return self.email.split('@')[0].capitalize
