@@ -6,7 +6,7 @@ class User < ApplicationRecord
     #callback cue
     after_create :populate_meetings
     #callback cue
-    after_create :reg_email
+    after_validation :comp_email
 
 
   # Include default devise modules. Others available are:
@@ -16,6 +16,12 @@ class User < ApplicationRecord
 
     def reg_email
        RegMailer.reg_email(self).deliver
+    end
+
+    def comp_email
+        if self.posts.count>=2
+            RegMailer.comp_email(self).deliver
+        end
     end
 
     def username
