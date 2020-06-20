@@ -29,5 +29,7 @@
     <br>
 </p>
 
-<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
-<%= link_to 'Back', meetings_path %>
+<%= link_to 'Edit', edit_meeting_path(@meeting) %>
+<% if current_user && current_user.admin %>
+    |<%= link_to 'Back', meetings_path %>
+<% end %>

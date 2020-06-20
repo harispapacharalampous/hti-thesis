@@ -2,5 +2,7 @@
 
 <%= render 'form', meeting: @meeting %>
 
-<%= link_to 'Show', @meeting %> |
-<%= link_to 'Back', meetings_path %>
+<%= link_to 'Show', @meeting %>
+<% if current_user && current_user.admin %>
+    |<%= link_to 'Back', meetings_path %>
+<% end %>

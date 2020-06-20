@@ -8,18 +8,30 @@
                     <!-- commented out the filtering to check the populate_meetings func -->
                         <% if current_user.walkpref == 1 %>
                             <% if meeting.activitytype == 1 %>
-                                <!-- not passing params because there is conflict with actual manual posts !-->
-                                <div class="btn btn-success btn-md"> <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %></div>
-                                <% if current_user.condition == 3 %> <!-- autonomy condition -->
-                                    <div class="btn "><%= link_to "Edit", edit_meeting_path(meeting.id) %></div>
+                                <!-- passing params to new post !-->
+                                <div class="btn btn-success btn-md">
+                                    <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %>
+                                </div>
+                                <!-- autonomy condition -->
+                                <% if current_user.condition == 3 %>
+                                    <div class="btn ">
+                                        <%= link_to "Edit", edit_meeting_path(meeting.id) %>
+                                    </div>
                                 <% end %>
                             <% end %>
                         <% end %>
                         <% if current_user.commutepref == 1 %>
                             <% if meeting.activitytype == 2 %>
-                                <!-- not passing params because there is conflict with actual manual posts !-->
-                                <div class="btn btn-success btn-sm"><%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %>
+                                <!-- passing params to new post !-->
+                                <div class="btn btn-success btn-sm">
+                                    <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %>
                                 </div>
+                                <!-- autonomy condition -->
+                                <% if current_user.condition == 3 %>
+                                    <div class="btn ">
+                                        <%= link_to "Edit", edit_meeting_path(meeting.id) %>
+                                    </div>
+                                <% end %>
                             <% end %>
                         <% end %>
                     <!-- end of filtering -->

@@ -1,50 +1,55 @@
-<p id="notice"><%= notice %></p>
+    <% if current_user && current_user.admin %>
+    <p id="notice"><%= notice %></p>
+    <h1>Meetings</h1>
 
-<h1>Meetings</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Start time</th>
+          <th>End time</th>
+          <th>User</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <tbody>
+          <% if current_user && current_user.admin %>
+              <% @meetings.each do |meeting| %>
+                  <tr>
+                    <td><%= meeting.name %></td>
+                    <td><%= meeting.activitytype %></td>
+                    <td><%= meeting.start_time.day %>/<%= meeting.start_time.month %>/<%= meeting.start_time.year %></td>
+                    <td><%= meeting.end_time.day %>/<%= meeting.end_time.month %>/<%= meeting.end_time.year %></td>
+                      <td><%= meeting.user.username %></td>
+                    <td><%= link_to 'Show', meeting %></td>
+                      <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+                        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+                <% end %>
+          <% else%>
+             <% current_user.meetings.each do |meeting| %>
+                  <tr>
+                    <td><%= meeting.name %></td>
+                    <td><%= meeting.activitytype %></td>
+                    <td><%= meeting.start_time.day %>/<%= meeting.start_time.month %>/<%= meeting.start_time.year %></td>
+                    <td><%= meeting.end_time.day %>/<%= meeting.end_time.month %>/<%= meeting.end_time.year %></td>
+                    <td><%= meeting.user.username %></td>
+                    <td><%= link_to 'Show', meeting %></td>
+                        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+                <% end %>
+          <% end%>
 
-  <tbody>
-      <% if current_user && current_user.admin %>
-          <% @meetings.each do |meeting| %>
-              <tr>
-                <td><%= meeting.name %></td>
-                <td><%= meeting.activitytype %></td>
-                <td><%= meeting.start_time.day %>/<%= meeting.start_time.month %>/<%= meeting.start_time.year %></td>
-                <td><%= meeting.end_time.day %>/<%= meeting.end_time.month %>/<%= meeting.end_time.year %></td>
-                  <td><%= meeting.user.username %></td>
-                <td><%= link_to 'Show', meeting %></td>
-                  <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-                    <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              </tr>
-            <% end %>
-      <% else%>
-         <% current_user.meetings.each do |meeting| %>
-              <tr>
-                <td><%= meeting.name %></td>
-                <td><%= meeting.activitytype %></td>
-                <td><%= meeting.start_time.day %>/<%= meeting.start_time.month %>/<%= meeting.start_time.year %></td>
-                <td><%= meeting.end_time.day %>/<%= meeting.end_time.month %>/<%= meeting.end_time.year %></td>
-                <td><%= meeting.user.username %></td>
-                <td><%= link_to 'Show', meeting %></td>
-                    <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              </tr>
-            <% end %>
-      <% end%>
+      </tbody>
+    </table>
 
-  </tbody>
-</table>
+    <br>
 
-<br>
-
-<%= link_to 'New Meeting', new_meeting_path %>
+    <%= link_to 'New Meeting', new_meeting_path %>
+<% else %>
+    <div class="row justify-content-center" style="margin-top: 10%; ">
+        <p class="h4">You dont have access. Sorry !</p>
+    </div>
+<% end %>
