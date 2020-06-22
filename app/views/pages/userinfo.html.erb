@@ -83,8 +83,8 @@ Licensed under MIT
                         <%= javascript_include_tag "//www.gstatic.com/charts/loader.js", "chartkick" %>
                         <% if current_user %>
                             <!-- chart affect for posts -->
-                            <% if current_user.condition == 3 %>
-                               <p class="h5">Affect trend line:</p>
+                            <% if current_user.condition == 2 %>
+                               <p class="h5">Affect group line:</p>
                                 <%= line_chart current_user.posts.all.pluck("created_at, affect"),xmin:"2020-01-01", xmax: "2021-01-01", height: "500px",width:"900px", colors: ["#000"] %>
                                 <br>
                             <% else %>
