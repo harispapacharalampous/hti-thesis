@@ -84,8 +84,8 @@ Licensed under MIT
                         <% if current_user %>
                             <!-- chart affect for posts -->
                             <% if current_user.condition == 2 %>
-                               <p class="h5">Affect group line:</p>
-                                <%= line_chart current_user.posts.all.pluck("created_at, affect"),xmin:"2020-01-01", xmax: "2021-01-01", height: "500px",width:"900px", colors: ["#000"] %>
+                               <p class="h5">Group line will be displayed here:</p>
+                                <%#= line_chart current_user.posts.all.pluck("created_at, affect"),xmin:"2020-01-01", xmax: "2021-01-01", height: "500px",width:"900px", colors: ["#000"] %>
                                 <br>
                             <% else %>
                                 <p class="h5">Affect trend line:</p>
@@ -93,8 +93,13 @@ Licensed under MIT
                                 <br>
                             <% end %>
                             <!-- chart entertainment for posts -->
-                            <p class="h5">Entertainment trend line:</p>
-                            <%= line_chart current_user.posts.all.pluck("created_at, entertainment"),xmin:"2020-01-01", xmax: "2021-01-01", colors: ["#2CA"], height: "500px",width:"900px" %>
+                            <% if current_user.condition == 2 %>
+                                 <p class="h5">Group line will be displayed here:</p>
+                            <% else %>
+                                <p class="h5">Entertainment trend line:</p>
+                                <%= line_chart current_user.posts.all.pluck("created_at, entertainment"),xmin:"2020-01-01", xmax: "2021-01-01", colors: ["#2CA"], height: "500px",width:"900px" %>
+                                <br>
+                            <% end %>
                             <!-- chart for coffee -->
                             <p class="h5">Coffee cups per day:</p>
                             <%= column_chart current_user.coffees.group_by_day_of_week(:created_at, format: "%a").count, colors: ["#CC8566"], height: "300px",width:"900px" %>
