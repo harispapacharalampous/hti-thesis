@@ -14,7 +14,7 @@ class CoffeesController < ApplicationController
 
   # GET /coffees/new
   def new
-    @coffee = Coffee.new
+    @coffee = Coffee.new(coffee_params)
   end
 
   # GET /coffees/1/edit
