@@ -6,6 +6,12 @@
 //= require Chart.bundle
 //= require chartkick
 //= require jsapi
+//= require jquery
+//= require popper
+//= require turbolinks
+//= require bootstrap
+//= require_tree.
+
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
