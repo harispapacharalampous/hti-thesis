@@ -10,7 +10,8 @@
 //= require popper
 //= require turbolinks
 //= require bootstrap
-//= require_tree.
+//= require_tree .
+//= require materialize-sprockets
 
 require("@rails/ujs").start()
 require("turbolinks").start()

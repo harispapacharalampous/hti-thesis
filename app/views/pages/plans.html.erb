@@ -9,7 +9,7 @@
                         <% if current_user.walkpref == 1 %>
                             <% if meeting.activitytype == 1 %>
                                 <!-- passing params to new post !-->
-                                <div class="btn btn-success btn-md">
+                                <div class="btn  btn-md">
                                     <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %>
                                 </div>
                                 <!-- autonomy condition -->
@@ -23,9 +23,14 @@
                         <% if current_user.commutepref == 1 %>
                             <% if meeting.activitytype == 2 %>
                                 <!-- passing params to new post !-->
-                                <div class="btn btn-success btn-sm">
-                                    <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %>
-                                </div>
+                                <!--<div class="btn  btn-sm">
+                                    <%#= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %>
+                                </div>-->
+                                <!-- trying MATERIAL IO buttons with rails -->
+                                <button class="mdc-button--outlined">
+                                  <div class="mdc-button__ripple"></div>
+                                  <span class="mdc-button__label"><%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %></span>
+                                </button>
                                 <!-- autonomy condition -->
                                 <% if current_user.condition == 3 %>
                                     <div class="btn ">
