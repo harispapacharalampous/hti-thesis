@@ -62,6 +62,8 @@ Licensed under MIT
                         <button type="button" class="btn btn-danger btn-sm"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></button>
                     </div>
                     </div>
+                    <br>
+                    <br>
                 <% else %>
                     <div style="margin-top: 20px;margin-bottom: 20px;">
                     <div class="row justify-content-center">
@@ -97,15 +99,15 @@ Licensed under MIT
                                     }
                                 } %>
                                 <!-- option 1: ugly overlaid graph with library settings -->
-                                <%= line_chart [
+                                <%#= line_chart [
                                   {name: "Group", data: Post.pluck("created_at, affect")},
                                   {name: "Individual", data: current_user.posts.pluck("created_at, affect")}
                                 ], library:  lib_set_affect  %>
                                 <br>
                                 <!-- option 2: divided graph with avg and individual lines -->
-                                <%= line_chart [
-                                  {name: "Group", data: Post.pluck("created_at, affect")},
-                                  {name: "Individual", data: current_user.posts.pluck("created_at, affect")}
+                                 <%= line_chart [
+                                  {name: "Group", data: Post.group_by_week(:created_at).average(:affect)},
+                                  {name: "Individual", data: current_user.posts.group_by_week(:created_at).average(:affect)}
                                 ], library:  lib_set_affect %>
                             <% else %>
                                 <p class="h5">Affect trend line:</p>
@@ -124,14 +126,14 @@ Licensed under MIT
                                     }
                                 } %>
                                 <!-- option 1: ugly overlaid graph with library settings -->
-                                <%= line_chart [
+                                <%#= line_chart [
                                   {name: "Group", data: Post.pluck("created_at, entertainment")},
                                   {name: "Individual", data: current_user.posts.pluck("created_at, entertainment")}
                                 ], library:  lib_set_entertainment %>
                                 <!-- option 2: divided graph with avg and individual lines -->
                                 <%= line_chart [
-                                  {name: "Group", data: Post.pluck("created_at, entertainment")},
-                                  {name: "Individual", data: current_user.posts.pluck("created_at, entertainment")}
+                                  {name: "Group", data: Post.group_by_week(:created_at).average(:entertainment)},
+                                  {name: "Individual", data: current_user.posts.group_by_week(:created_at).average(:entertainment)}
                                 ], library:  lib_set_entertainment %>
                             <% else %>
                                 <p class="h5">Entertainment trend line:</p>
