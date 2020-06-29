@@ -2,15 +2,15 @@
     <!-- Signed in view -->
     <div class="center">
         <%= week_calendar number_of_weeks: 2, events: current_user.meetings.all do |date, meetings| %>
-            <%= date %>
+            <%= date.strftime("%B") %> <%= date.day %>
             <% meetings.each do |meeting| %>
                 <div>
                     <!-- commented out the filtering to check the populate_meetings func -->
                         <% if current_user.walkpref == 1 %>
                             <% if meeting.activitytype == 1 %>
                                 <!-- passing params to new post !-->
-                                <div class="btn  btn-md">
-                                    <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %>
+                                <div class="event">
+                                    <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %><i class="icon-chevron-right"></i>
                                 </div>
                                 <!-- autonomy condition -->
                                 <% if current_user.condition == 3 %>
@@ -23,14 +23,9 @@
                         <% if current_user.commutepref == 1 %>
                             <% if meeting.activitytype == 2 %>
                                 <!-- passing params to new post !-->
-                                <!--<div class="btn  btn-sm">
-                                    <%#= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %>
-                                </div>-->
-                                <!-- trying MATERIAL IO buttons with rails -->
-                                <button class="mdc-button--outlined">
-                                  <div class="mdc-button__ripple"></div>
-                                  <span class="mdc-button__label"><%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %></span>
-                                </button>
+                                <div class="event">
+                                    <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %><i class="icon-chevron-right"></i>
+                                </div>
                                 <!-- autonomy condition -->
                                 <% if current_user.condition == 3 %>
                                     <div class="btn ">

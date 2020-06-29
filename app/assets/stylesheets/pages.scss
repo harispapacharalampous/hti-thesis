@@ -3,6 +3,29 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @charset "UTF-8";
 // custom css
+@import url(https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
+
+.event{
+		background: #ECECEC;
+		border-radius: 15px;
+		padding: 10px 20px;
+		display: block;
+		font-family: arial;
+		font-weight: bold;
+		color:#7f7f7f;
+		text-decoration: none;
+		text-shadow:0px 1px 0px #fff;
+		border:1px solid #a7a7a7;
+		min-width: 100px;
+		margin:0px auto;
+		box-shadow: 0px 2px 1px white inset, 0px -2px 8px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
+		-webkit-transition:box-shadow 0.5s;
+	}
+
+i{
+    float: right;
+    margin-top: 2px;
+	}
 
 //user profile
 /* Profile container */
@@ -136,7 +159,7 @@ h1, h2{
     -webkit-border-horizontal-spacing: 0px;
     -webkit-border-vertical-spacing: 0px;
     background-color: rgba(0, 0, 0, 0);
-    border: 1px solid rgb(221, 221, 221);
+    border: 1.5px solid rgb(221, 221, 221);
     border-collapse: collapse;
     box-sizing: border-box;
     max-width: 100%;
@@ -151,14 +174,15 @@ h1, h2{
   }
 
   th {
-    padding: 6px;
+    padding: 15px;
     border-bottom: 2px solid rgb(221, 221, 221);
     border-collapse: collapse;
     border-left: 1px solid rgb(221, 221, 221);
     border-right: 1px solid rgb(221, 221, 221);
     border-top: 0px none rgb(51, 51, 51);
     box-sizing: border-box;
-    text-align: left;
+    text-align: center;
+    min-width: 150px;
   }
 
   td {
@@ -184,6 +208,7 @@ h1, h2{
   .day {
     height: 150px;
     width: 200px;
+    font-weight: 500;
   }
 
   .wday-0 {}
@@ -215,7 +240,7 @@ h1, h2{
 
     .calendar-heading{
         margin-top: 20px;
-        margin-bottom: 20px;
+        margin-bottom: 50px;
     }
     .calendar-title{
         font-size: 30px;
