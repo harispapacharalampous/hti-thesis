@@ -14,7 +14,7 @@ class WatersController < ApplicationController
 
   # GET /waters/new
   def new
-    @water = Water.new
+    @water = Water.new(water_params)
   end
 
   # GET /waters/1/edit
