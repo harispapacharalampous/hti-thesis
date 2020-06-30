@@ -13,13 +13,13 @@
 
   <%= form.hidden_field :user_id, value: current_user.id %>
   <div class="field">
-    <%= form.label :measurement_type %>
-    <%= form.select :measurement_type ,  [['cup',1],['ml',2]] %>
+    <p><b>Measurement Type:</b> Cup</p>
+    <%= form.hidden_field :measurement_type, value: 1 %>
   </div>
 
   <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
+    <p><b>Quantity:</b> 1</p>
+    <%= form.hidden_field :quantity, value: 1 %>
   </div>
 
 

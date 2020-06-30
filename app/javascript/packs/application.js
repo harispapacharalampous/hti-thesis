@@ -12,6 +12,7 @@
 //= require bootstrap
 //= require_tree .
 //= require materialize-sprockets
+//= require simple_form_extension
 
 require("@rails/ujs").start()
 require("turbolinks").start()

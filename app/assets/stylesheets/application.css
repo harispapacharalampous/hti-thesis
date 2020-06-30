@@ -20,6 +20,8 @@ $secondary-color: color("yellow", "base") !default;
 
 /* custom css*/
 *= require simple_calendar
+*= require simple_form_extension
+
 
 
 .info-box{

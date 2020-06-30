@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_174036) do
+ActiveRecord::Schema.define(version: 2020_06_30_132229) do
 
   create_table "coffees", force: :cascade do |t|
     t.integer "measurement_type"
@@ -77,5 +77,4 @@ ActiveRecord::Schema.define(version: 2020_06_16_174036) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "posts", "users"
 end

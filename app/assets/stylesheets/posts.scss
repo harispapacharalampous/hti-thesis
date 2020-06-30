@@ -5,7 +5,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @charset "UTF-8";
-/* Body */
 
-/* Container */
 
+.inputs_forty input, .inputs_forty textarea,  .inputs_forty select {
+    width: 40%;
+}
+.likert-labels{
+    padding-left:10px;
+    padding-right:10px;
+}
