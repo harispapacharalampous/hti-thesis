@@ -49,10 +49,10 @@
 
 
   <div class="field">
-    <div>How do you feel right now?</div><br>
+    <div>How did you feel during this activity ?</div><br>
     <%#= form.text_field :affect, as: :integer %>
     <div class = "inputs_forty">
-    <span class="likert-labels">Not well</span><%= form.range_field :affect, as: :slider, :in => -3..3 , :step => 1 %><span class="likert-labels">Great</span>
+    <span class="likert-labels">Not well</span><%= form.range_field :affect, as: :slider, :in => -3..3 , :step => 1 %><span class="likert-labels">Very well</span>
     </div><br>
   </div>
 

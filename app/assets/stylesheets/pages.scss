@@ -185,7 +185,7 @@ h1, h2{
     padding: 6px;
     vertical-align: top;
     width: 14%;
-
+      background-color: white;
 
     border: 1px solid #ddd;
     border-top-color: rgb(221, 221, 221);
@@ -228,10 +228,22 @@ h1, h2{
   .start-date {}
 
   .prev-month {
-    background: #DDD;
+    background: repeating-linear-gradient(
+    -55deg,
+    #ddd,
+    #ddd 10px,
+    #fff 10px,
+    #fff 20px
+  );
   }
   .next-month {
-    background: #DDD;
+     background: repeating-linear-gradient(
+    -55deg,
+    #ddd,
+    #ddd 10px,
+    #fff 10px,
+    #fff 20px
+  );
   }
   .current-month {}
 
