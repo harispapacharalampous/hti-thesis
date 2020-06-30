@@ -190,6 +190,7 @@ h1, h2{
     vertical-align: top;
     width: 14%;
 
+
     border: 1px solid #ddd;
     border-top-color: rgb(221, 221, 221);
     border-top-style: solid;
@@ -206,9 +207,11 @@ h1, h2{
   }
 
   .day {
-    height: 150px;
+    height: 300px;
     width: 200px;
     font-weight: 500;
+    padding-top: 20px ;
+
   }
 
   .wday-0 {}
