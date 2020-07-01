@@ -10,7 +10,7 @@
                             <% if meeting.activitytype == 1 %>
                                 <!-- passing params to new post !-->
                                 <div class="event">
-                                    <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %><i class="icon-chevron-right"></i>
+                                    <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %><i class="icon-chevron-right icon-position"></i>
                                 </div>
                                 <!-- autonomy condition -->
                                 <% if current_user.condition == 3 %>
@@ -24,7 +24,7 @@
                             <% if meeting.activitytype == 2 %>
                                 <!-- passing params to new post !-->
                                 <div class="event">
-                                    <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %><i class="icon-chevron-right"></i>
+                                    <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %><i class="icon-chevron-right icon-position"></i>
                                 </div>
                                 <!-- autonomy condition -->
                                 <% if current_user.condition == 3 %>
