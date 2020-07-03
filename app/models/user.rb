@@ -17,8 +17,10 @@ class User < ApplicationRecord
 
 
     def after_database_authentication
-        if self.posts.count>=2
-            RegMailer.comp_email(self).deliver_now
+        if self.condition ==1
+            if self.posts.count>=2
+                RegMailer.comp_email(self).deliver_now
+            end
         end
     end
 

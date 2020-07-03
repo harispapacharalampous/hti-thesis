@@ -88,7 +88,7 @@ Licensed under MIT
                         <%= javascript_include_tag "//www.gstatic.com/charts/loader.js", "chartkick" %>
                         <% if current_user %>
                             <!-- chart affect for posts -->
-                            <% if current_user.condition == 2 %>
+                            <% if current_user.condition == 1 %>
                                <p class="h5">Group and individual trend affect lines:</p>
                                 <!-- here -->
                                 <% lib_set_affect = {
@@ -115,7 +115,7 @@ Licensed under MIT
                                 <br>
                             <% end %>
                             <!-- chart entertainment for posts -->
-                            <% if current_user.condition == 2 %>
+                            <% if current_user.condition == 1 %>
                                  <p class="h5">Group and individual trend entertainment lines:</p>
                                     <!-- here -->
                                 <% lib_set_entertainment = {

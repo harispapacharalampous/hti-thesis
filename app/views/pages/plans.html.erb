@@ -13,7 +13,7 @@
                                     <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %><i class="icon-chevron-right icon-position"></i>
                                 </div>
                                 <!-- autonomy condition -->
-                                <% if current_user.condition == 3 %>
+                                <% if current_user.condition == 1 %>
                                     <div class="btn ">
                                         <%= link_to "Edit", edit_meeting_path(meeting.id) %>
                                     </div>
@@ -27,7 +27,7 @@
                                     <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %><i class="icon-chevron-right icon-position"></i>
                                 </div>
                                 <!-- autonomy condition -->
-                                <% if current_user.condition == 3 %>
+                                <% if current_user.condition == 1 %>
                                     <div class="btn ">
                                         <%= link_to "Edit", edit_meeting_path(meeting.id) %>
                                     </div>
