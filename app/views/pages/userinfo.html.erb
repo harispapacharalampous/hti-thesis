@@ -89,26 +89,27 @@ Licensed under MIT
                         <% if current_user %>
                             <!-- chart affect for posts -->
                             <% if current_user.condition == 1 %>
-                               <p class="h5">Group and individual trend affect lines:</p>
+                               <p class="h5">How other users' mood relate to yours:</p>
                                 <!-- here -->
-                                <% lib_set_affect = {
-                                    colors: ['#696969', '#1111cc'],
-                                    series: {
-                                        0 => {lineWidth: 1},
-                                        1 => {lineWidth: 2},
-                                    }
-                                } %>
                                 <!-- option 1: ugly overlaid graph with library settings -->
                                 <%#= line_chart [
                                   {name: "All users", data: Post.pluck("created_at, affect")},
                                   {name: "Your data", data: current_user.posts.pluck("created_at, affect")}
                                 ], library:  lib_set_affect  %>
                                 <br>
-                                <!-- option 2: divided graph with avg and individual lines -->
+                                <!-- option 2: WORKING divided graph with avg and individual lines -->
                                  <%= line_chart [
                                   {name: "All users", data: Post.group_by_week(:created_at).average(:affect)},
                                   {name: "Your data", data: current_user.posts.group_by_week(:created_at).average(:affect)}
-                                ], library:  lib_set_affect %>
+                                ], {
+                                    colors: ['#696969', '#1111cc'],
+                                    series: {
+                                        0 => {lineWidth: 1},
+                                        1 => {lineWidth: 2},
+                                    },
+                                    xtitle: "Time",
+                                    ytitle: "Affect"
+                                }  %>
                             <% else %>
                                 <p class="h5">Affect trend line:</p>
                                 <%= line_chart current_user.posts.pluck("created_at, affect"),xmin:"2020-01-01", xmax: "2021-01-01", height: "500px",width:"900px", colors: ["#f77e6e"] %>
@@ -116,27 +117,29 @@ Licensed under MIT
                             <% end %>
                             <!-- chart entertainment for posts -->
                             <% if current_user.condition == 1 %>
-                                 <p class="h5">Group and individual trend entertainment lines:</p>
+                                 <p class="h5">How other users' experiences relate to yours :</p>
                                     <!-- here -->
-                                <% lib_set_entertainment = {
-                                    colors: ['#696969', '#3366cc'],
-                                    series: {
-                                        0 => {lineWidth: 1},
-                                        1 => {lineWidth: 2},
-                                    }
-                                } %>
                                 <!-- option 1: ugly overlaid graph with library settings -->
                                 <%#= line_chart [
                                   {name: "All users", data: Post.pluck("created_at, entertainment")},
                                   {name: "Your data", data: current_user.posts.pluck("created_at, entertainment")}
                                 ], library:  lib_set_entertainment %>
-                                <!-- option 2: divided graph with avg and individual lines -->
+                                <!-- option 2: WORKING divided graph with avg and individual lines -->
                                 <%= line_chart [
                                   {name: "All users", data: Post.group_by_week(:created_at).average(:entertainment)},
                                   {name: "Your data", data: current_user.posts.group_by_week(:created_at).average(:entertainment)}
-                                ], library:  lib_set_entertainment %>
+                                ],
+                                    colors: ['#696969', '#3366cc'],
+                                    series: {
+                                        0 => {lineWidth: 1},
+                                        1 => {lineWidth: 2},
+                                    },
+                                    xtitle: "Time",
+                                    ytitle: "Entertainment"
+                                 %>
+
                             <% else %>
-                                <p class="h5">Entertainment trend line:</p>
+                                <p class="h5">How your physical activities experiences change over time:</p>
                                 <%= line_chart current_user.posts.pluck("created_at, entertainment"),xmin:"2020-01-01", xmax: "2021-01-01", colors: ["#2CA"], height: "500px",width:"900px" %>
                                 <br>
                             <% end %>
