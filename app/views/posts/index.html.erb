@@ -1,4 +1,5 @@
 <div class="container">
+
     <% if current_user %>
     <h1>Posts</h1>
       <!-- green notice messages -->
@@ -25,7 +26,7 @@
                         <br>entertainment:<%= post.entertainment %>
                         <br>user id:<%= post.user_id %>
                         <br>
-                        <div style="float:right"><%= link_to 'Show', post , class: 'ui button'%><%= link_to 'Edit', edit_post_path(post), class: 'ui button' %><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' %></div>
+                        <div style="float:right"><div class="ui buttons"><%= link_to 'Show', post , class: 'ui button'%><%= link_to 'Edit', edit_post_path(post), class: 'ui button' %><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' %></div></div>
                     </div>
                 <% end %>
                 <!-- admin view end -->
@@ -41,7 +42,7 @@
                     <% end %>
                     <br><span class="ui h4 header">Description :</span> <%= post.body %>
 
-                    <div style="float:right"><%= link_to 'Show', post, class: 'ui button' %><%= link_to 'Edit', edit_post_path(post), class: 'ui button' %></div>
+                     <div style="float:right"><div class="ui buttons"><%= link_to 'Show', post , class: 'ui button'%><%= link_to 'Edit', edit_post_path(post), class: 'ui button' %></div></div>
                 </div>
                 <% end %>
                 <!-- guest view end -->
