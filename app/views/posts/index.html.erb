@@ -30,15 +30,16 @@
                     <% current_user.posts.each do |post| %>
                     <div class="ui secondary segment ">
                         <!-- post segment -->
-                        <h2 class="ui medium header left floated"> <%= post.created_at.strftime("%A, %d %B %Y") %> </h4>
+                        <p class="ui h2 medium header"> <%= post.created_at.strftime("%A, %d %B %Y") %> </p>
                         <% if post.entry_type==1 %>
-                            Walk : <%= post.title %>
+                               <p class="ui"><span class="ui header h4">Walk :</span> <%= post.title %></p>
                         <% elsif post.entry_type==2 %>
-                            Commute : <%= post.title %>
+                               <p class="ui"><span class="ui header h4">Commute :</span> <%= post.title %></p>
                         <% end %>
-                        <br><span class="ui h4 header">Description :</span> <%= post.body %>
 
-                         <div style="float:right"><div class="ui buttons"><%= link_to 'Show', post , class: 'ui button'%><%= link_to 'Edit', edit_post_path(post), class: 'ui button' %></div></div>
+                        <p class="ui"><span class="ui header h4">Description :</span> <%= post.body %></p>
+
+                         <div class="floated center"><div class="ui buttons"><%= link_to 'Show', post , class: 'ui button'%><%= link_to 'Edit', edit_post_path(post), class: 'ui button' %></div></div>
                     </div>
                     <% end %>
                     <!-- guest view end -->

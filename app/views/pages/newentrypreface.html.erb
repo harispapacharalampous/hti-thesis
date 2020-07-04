@@ -1,0 +1,16 @@
+<div class="container">
+    <div style="margin-top:25%">
+    <div class="column">
+    <div class="ui middle aligned center aligned grid ">
+    <div class="row">
+    <div class="eleven wide column">
+        <%= link_to "WALK", new_post_path(:post => {:created_at => DateTime.now, :entry_type => 1 }), class: "ui secondary segment ", style: 'width:100%'%>
+        <%= link_to new_post_path(:post => {:created_at => DateTime.now, :entry_type => 2 }), class: "ui secondary segment ", style: 'width:100%' do%> COMMUTE<%end%>
+        <%= link_to "OTHER", new_post_path(:post => {:created_at => DateTime.now, :entry_type => 3 }), class: "ui secondary segment ", style: 'width:100%'%>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</div>
