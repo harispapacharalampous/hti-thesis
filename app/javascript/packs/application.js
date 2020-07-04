@@ -13,11 +13,13 @@
 //= require_tree .
 //= require materialize-sprockets
 //= require simple_form_extension
-
+// Loads all Semantic javascripts
+//= require semantic-ui
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("semantic-ui-sass")
 
 
 

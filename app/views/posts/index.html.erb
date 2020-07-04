@@ -5,52 +5,41 @@
       <p id="notice">
         <%= notice %>
       </p>
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Body</th>
-          <th>Affect</th>
-          <th>Entertainment</th>
-          <th>User</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
 
-      <tbody>
+
+    <div class="column">
           <% if current_user && current_user.admin %>
                 <!-- admin view -->
                 <% @posts.each do |post| %>
-                  <tr>
-                    <td><%= post.title %></td>
-                    <td><%= post.body %></td>
-                    <td><%= post.affect %></td>
-                    <td><%= post.entertainment %></td>
-                    <td><%= post.user_id %></td>
-                    <td><%= link_to 'Show', post %></td>
-                    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-                    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  </tr>
+                <div class="ui secondary segment ">
+                    <%= post.title %>
+                    <%= post.body %>
+                    <%= post.affect %>
+                    <%= post.entertainment %>
+                    <%= post.user_id %>
+                    <%= link_to 'Show', post %>
+                    <%= link_to 'Edit', edit_post_path(post) %>
+                    <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </div>
                 <% end %>
                 <!-- admin view end -->
           <% else %>
                 <!-- guest view -->
                 <% current_user.posts.each do |post| %>
-                  <tr>
-                    <td><%= post.title %></td>
-                    <td><%= post.body %></td>
-                    <td><%= post.affect %></td>
-                    <td><%= post.entertainment %></td>
-                    <td><%= post.user.username %></td>
-                    <td><%= link_to 'Show', post %></td>
-                    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-                  </tr>
+                <div class="ui secondary segment ">
+                    <%= post.title %>
+                    <%= post.body %>
+                    <%= post.affect %>
+                    <%= post.entertainment %>
+                    <%= post.user_id %>
+                    <%= link_to 'Show', post %>
+                    <%= link_to 'Edit', edit_post_path(post) %>
+                </div>
                 <% end %>
                 <!-- guest view end -->
           <% end %>
-      </tbody>
-    <!-- new post button -->
-    </table>
+    </div>
+
     <br>
     <section class="newpost_banner center" id="new post">
         <div class="btn btn-info btn-lg"><%= link_to 'New Walk', new_post_path(:post =>{:created_at => DateTime.now , :entry_type => 1 }) %></div>

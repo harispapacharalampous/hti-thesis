@@ -3,15 +3,15 @@ pre {
   padding: 10px;
   font-size: 11px; }
 
-a {
-  color: #000; }
+a:link, a:visited {
+color: #707070;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+}
 
-a:visited {
-  color: #666; }
-
-a:hover {
-  color: #000;
-   }
+a:hover, a:active {
+}
 
 th {
   padding-bottom: 5px; }

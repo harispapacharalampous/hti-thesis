@@ -2,14 +2,12 @@
 
 
 <!-- Fixed navbar -->
-  <nav class="site-header sticky-top py-1">
-      <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" ><%= link_to "HOME", root_path %></a>
-        <a class="py-2 d-none d-md-inline-block" ><%= link_to('POSTS', posts_path ) %></a>
-        <a class="py-2 d-none d-md-inline-block" ><%= link_to("PLANS", "/pages/plans") %></a>
-        <a class="py-2 d-none d-md-inline-block" ><%= link_to("USER", "/pages/userinfo") %></a>
-        <a class="py-2 d-none d-md-inline-block" ><%= link_to("EDIT USER", edit_user_registration_path) %></a>
+      <div class="ui secondary menu sticky-top container d-flex flex-column flex-md-row justify-content-between">
+        <div class="item"><%= link_to "HOME", root_path, class: 'item' %></div>
+        <div class="item" ><%= link_to 'POSTS', posts_path , class: 'item' %></div>
+        <div class="item" ><%= link_to "PLANS", "/pages/plans", class: 'item'  %></div>
+        <div class="item" ><%= link_to "USER", "/pages/userinfo", class: 'item' %></div>
+        <div class="item" ><%= link_to "EDIT USER", edit_user_registration_path, class: 'item' %></div>
       </div>
-    </nav>
 
 </header>

@@ -13,16 +13,27 @@
  *= require_tree .
  *= require_self
  */
-@import "materialize/components/color-variables";
-$primary-color: color("blue", "lighten-2") !default;
-$secondary-color: color("yellow", "base") !default;
-@import "materialize";
+// sematic UI css items
 
-/* custom css*/
-*= require simple_calendar
-*= require simple_form_extension
+$font-family: 'helvetica';
+@import "semantic-ui";
+@import "semantic-ui/collections/menu";
 
+//overriding SEMANTIC UI
+.ui.secondary.segment{
+    background-color: #5CA4A9 !important ;
+    opacity: 0.82 !important ;
+}
 
+.profile-sidebar{
+    background-color: #E6EBE0 !important;
+}
+
+//pre existing custom css
+
+body{
+    background-color: #E6EBE0
+}
 
 .info-box{
     width: 60%;
