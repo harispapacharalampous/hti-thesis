@@ -19,6 +19,8 @@ $font-family: 'helvetica';
 @import "semantic-ui";
 @import "semantic-ui/collections/menu";
 
+
+
 //overriding SEMANTIC UI
 .ui.secondary.segment{
     background-color: #5CA4A9 !important ;
@@ -26,13 +28,17 @@ $font-family: 'helvetica';
 }
 
 .profile-sidebar{
-    background-color: #E6EBE0 !important;
+    //background-color: #E6EBE0 !important;
 }
 
 //pre existing custom css
 
+.larger-text{
+    font-size: x-large !important;
+}
+
 body{
-    background-color: #E6EBE0
+    //background-color: #E6EBE0
 }
 
 .info-box{

@@ -4,59 +4,25 @@ A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themefores
 Licensed under MIT
 -->
 <div class="container">
-			<div class="profile-sidebar">
-				<!-- SIDEBAR USERPIC -->
-                <div class="row justify-content-center">
-                    <div class="col-md-9">
-                        <div class="justify-content-center profile-userpic">
+
+            <div class="ui two column grid segment">
+                <div class="column">
+                    <div class="justify-content-center profile-userpic">
                             <img src="https://i.pinimg.com/originals/2c/7f/d4/2c7fd4e277d332cf993e93d98906dfd1.png" class="center-user-image img-responsive" alt="user-image">
-                        </div>
                     </div>
                 </div>
-                <!-- END SIDEBAR USERPIC -->
-
-                <!-- SIDEBAR USER TITLE -->
-                <% if current_user %>
-                    <div class="row justify-content-center">
-                        <div class="profile-usertitle">
-                            <div class="justify-content-center profile-usertitle-name">
-                                <!--MF  DOOM -->
-                            </div>
-                            <div class="profile-usertitle-job">
-                                <!--Supervillain -->
-                            </div>
-                            <div class="h3" style="color : #339699">
-                                <%= current_user.username %>
+                <div class="column">
+                    <!-- SIDEBAR USER TITLE -->
+                    <% if current_user %>
+                        <div class="row justify-content-center">
+                            <div class="profile-usertitle">
+                                <div class="h3" style="color : #339699">
+                                    <%= current_user.username %>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <!-- END SIDEBAR USER TITLE -->
-                <br>
-                <!-- USER water and coffee -->
-                <div class="row justify-content-center">
-                    <div class="col-md-auto">
-                        <!-- <p class="h5">Water drank today:</p>
-                        <br> -->
-                        <!-- displays current weeks count, ped day-->
-                        <p class="h6">Coffee drank today:
-                            <%= current_user.coffees.select{|coffee| coffee.created_at.day == DateTime.now.day }.size %><b> / <%= current_user.climit %> cups </b>
-                            <div class="profile-userbuttons">
-                                <%= link_to "Add coffee" , new_coffee_path(:coffee =>{:measurement_type => '1', :quantity => '1', :user_id => current_user.id}), class: "ui basic button" %>
-                            </div>
-                        </p>
-                        <!-- displays current weeks count, ped day-->
-                        <p class="h6">Water drank today:
-                            <%= current_user.waters.select{|water| water.created_at.day == DateTime.now.day }.size %><b> / <%= current_user.wlimit %> cups</b>
-                            <div class="profile-userbuttons">
-                                <%= link_to "Add water" , new_water_path(:water =>{:measurement_type => '1', :quantity => '1', :user_id => current_user.id}), class: "ui basic button" %>
-                            </div>
-                        </p>
-                        <br>
-                    </div>
-                </div>
-                <!-- USER water and coffee END -->
-
-				<!-- SIDEBAR BUTTONS -->
+                    <!-- END SIDEBAR USER TITLE -->
+                    <!-- SIDEBAR BUTTONS -->
                     <div class="row justify-content-center">
                     <div class="profile-userbuttons">
                         <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:"ui negative button"%>
@@ -77,6 +43,33 @@ Licensed under MIT
                     </div>
                 <% end %>
 				<!-- END SIDEBAR BUTTONS -->
+                <!-- USER water and coffee and add actions-->
+                <div class="row justify-content-center">
+                    <div class="col-md-auto">
+                        <!-- <p class="h5">Water drank today:</p>
+                        <br> -->
+                        <!-- displays current weeks count, ped day-->
+                        <p class="h5">Coffee drank today:
+                            <%= current_user.coffees.select{|coffee| coffee.created_at.day == DateTime.now.day }.size %><b> / <%= current_user.climit %> cups </b>
+                            <div class="profile-userbuttons">
+                                <%= link_to "Add coffee" , new_coffee_path(:coffee =>{:measurement_type => '1', :quantity => '1', :user_id => current_user.id}), class: "ui basic button" %>
+                            </div>
+                        </p>
+                        <!-- displays current weeks count, ped day-->
+                        <p class="h5">Water drank today:
+                            <%= current_user.waters.select{|water| water.created_at.day == DateTime.now.day }.size %><b> / <%= current_user.wlimit %> cups</b>
+                            <div class="profile-userbuttons">
+                                <%= link_to "Add water" , new_water_path(:water =>{:measurement_type => '1', :quantity => '1', :user_id => current_user.id}), class: "ui basic button" %>
+                            </div>
+                        </p>
+                        <br>
+                    </div>
+                </div>
+                <!-- USER water and coffee END -->
+
+                </div>
+            </div>
+                <!-- END SIDEBAR USERPIC -->
 
 				<!-- FEEDBACK SECTION -->
                 <div class="row justify-content-center">
@@ -89,8 +82,6 @@ Licensed under MIT
                         <% if current_user %>
                             <!-- chart affect for posts -->
                             <% if current_user.condition == 1 %>
-                               <p class="h5">How other users' mood relate to yours:</p>
-                                <!-- here -->
                                 <!-- option 1: ugly overlaid graph with library settings -->
                                 <%#= line_chart [
                                   {name: "All users", data: Post.pluck("created_at, affect")},
@@ -98,26 +89,30 @@ Licensed under MIT
                                 ], library:  lib_set_affect  %>
                                 <br>
                                 <!-- option 2: WORKING divided graph with avg and individual lines -->
-                                 <%= line_chart [
-                                  {name: "All users", data: Post.group_by_week(:created_at).average(:affect)},
-                                  {name: "Your data", data: current_user.posts.group_by_week(:created_at).average(:affect)}
-                                ], {
-                                    colors: ['#696969', '#1111cc'],
-                                    series: {
-                                        0 => {lineWidth: 1},
-                                        1 => {lineWidth: 2},
-                                    },
-                                    xtitle: "Time",
-                                    ytitle: "Affect"
-                                }  %>
+                                <div class="row ui raised segment">
+                                    <p class="ui ribbon label large blue">How other users' mood relate to yours:</p>
+                                     <%= line_chart [
+                                      {name: "All users", data: Post.group_by_week(:created_at).average(:affect)},
+                                      {name: "Your data", data: current_user.posts.group_by_week(:created_at).average(:affect)}
+                                    ], {
+                                        colors: ['#696969', '#1111cc'],
+                                        series: {
+                                            0 => {lineWidth: 1},
+                                            1 => {lineWidth: 2},
+                                        },
+                                        xtitle: "Time",
+                                        ytitle: "Affect"
+                                    }  %>
+                                </div>
                             <% else %>
-                                <p class="h5">Affect trend line:</p>
-                                <%= line_chart current_user.posts.pluck("created_at, affect"),xmin:"2020-01-01", xmax: "2021-01-01", height: "500px",width:"900px", colors: ["#f77e6e"] %>
+                                <div class="row ui raised segment">
+                                    <p class="ui ribbon labelui ribbon label large blue">How your physical activity mood changes over time:</p>
+                                    <%= line_chart current_user.posts.pluck("created_at, affect"),xmin:"2020-01-01", xmax: "2021-01-01", height: "500px",width:"900px", colors: ["#f77e6e"] %>
+                                </div>
                                 <br>
                             <% end %>
                             <!-- chart entertainment for posts -->
                             <% if current_user.condition == 1 %>
-                                 <p class="h5">How other users' experiences relate to yours :</p>
                                     <!-- here -->
                                 <!-- option 1: ugly overlaid graph with library settings -->
                                 <%#= line_chart [
@@ -125,30 +120,45 @@ Licensed under MIT
                                   {name: "Your data", data: current_user.posts.pluck("created_at, entertainment")}
                                 ], library:  lib_set_entertainment %>
                                 <!-- option 2: WORKING divided graph with avg and individual lines -->
-                                <%= line_chart [
-                                  {name: "All users", data: Post.group_by_week(:created_at).average(:entertainment)},
-                                  {name: "Your data", data: current_user.posts.group_by_week(:created_at).average(:entertainment)}
-                                ],
-                                    colors: ['#696969', '#3366cc'],
-                                    series: {
-                                        0 => {lineWidth: 1},
-                                        1 => {lineWidth: 2},
-                                    },
-                                    xtitle: "Time",
-                                    ytitle: "Entertainment"
-                                 %>
+                                <div class="row ui raised  segment">
+                                    <p class="ui ribbon label large blue">How other users' experiences relate to yours :</p>
+                                    <%= line_chart [
+                                      {name: "All users", data: Post.group_by_week(:created_at).average(:entertainment)},
+                                      {name: "Your data", data: current_user.posts.group_by_week(:created_at).average(:entertainment)}
+                                    ],
+                                        colors: ['#696969', '#3366cc'],
+                                        series: {
+                                            0 => {lineWidth: 1},
+                                            1 => {lineWidth: 2},
+                                        },
+                                        xtitle: "Time",
+                                        ytitle: "Entertainment"
+                                     %>
+                                </div>
 
                             <% else %>
-                                <p class="h5">How your physical activities experiences change over time:</p>
-                                <%= line_chart current_user.posts.pluck("created_at, entertainment"),xmin:"2020-01-01", xmax: "2021-01-01", colors: ["#2CA"], height: "500px",width:"900px" %>
+                                <div class="row ui raised segment">
+                                    <p class="ui ribbon label large blue">How your physical activity experiences change over time:</p>
+                                    <%= line_chart current_user.posts.pluck("created_at, entertainment"),xmin:"2020-01-01", xmax: "2021-01-01", colors: ["#2CA"], height: "500px",width:"900px" %>
+                                </div>
                                 <br>
                             <% end %>
-                            <!-- chart for coffee -->
-                            <p class="h5">Coffee cups per day:</p>
-                            <%= column_chart current_user.coffees.group_by_day_of_week(:created_at, format: "%a",range: 1.weeks.ago.midnight..DateTime.now).count, colors: ["#CC8566"], height: "300px",width:"800px" %>
-                            <!-- chart for water -->
-                            <p class="h5">Water cups per day:</p>
-                            <%= column_chart current_user.waters.group_by_day_of_week(:created_at, format: "%a",range: 1.weeks.ago.midnight..DateTime.now).count, colors: ["#87b4f8"], height: "300px",width:"800px" %>
+                            <!-- coffee and water ffeedback charts -->
+                            <div class="row ui raised segment">
+                                    <div class="col">
+                                        <!-- chart for coffee -->
+                                            <p class="h5 center">Coffee cups per day:</p>
+                                            <%= column_chart current_user.coffees.group_by_day_of_week(:created_at, format: "%a",range: DateTime.now.at_beginning_of_week..DateTime.now).count, colors: ["#CC8566"], height: "300px",width:"450px", min: 0, max: current_user.climit %>
+                                    </div>
+                                    <div class="col">
+                                            <!-- chart for water -->
+                                            <p class="h5 center ">Water cups per day:</p>
+                                            <%= column_chart current_user.waters.group_by_day_of_week(:created_at, format: "%a",range: DateTime.now.at_beginning_of_week..DateTime.now).count, colors: ["#87b4f8"], height: "300px",width:"450px", min: 0, max: current_user.wlimit %>
+                                    </div>
+                            </div>
+
+
+
                         <% else %>
                             **login to see graphs**
                         <% end %>

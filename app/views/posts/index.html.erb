@@ -8,7 +8,7 @@
             <div class="eleven wide column">
               <% if current_user && current_user.admin %>
                     <!-- admin view -->
-                    <% @posts.each do |post| %>
+                    <% @posts.order(created_at: :desc).each do |post| %>
                         <div class="ui secondary segment ">
                             <!-- post segment -->
                             <h2 class="left floated ui medium header"> <%= post.created_at.strftime("%A, %d %B %Y") %> </h4>
@@ -27,7 +27,7 @@
                     <!-- admin view end -->
               <% else %>
                     <!-- guest view -->
-                    <% current_user.posts.each do |post| %>
+                    <% current_user.posts.order(created_at: :desc).each do |post| %>
                     <div class="ui secondary segment ">
                         <!-- post segment -->
                         <p class="ui h2 medium header"> <%= post.created_at.strftime("%A, %d %B %Y") %> </p>
@@ -48,13 +48,6 @@
         </div>
     </div>
 </div>
-
-    <br>
-    <section class="newpost_banner center" id="new post">
-        <div class="btn btn-info btn-lg"><%= link_to 'New Walk', new_post_path(:post =>{:created_at => DateTime.now , :entry_type => 1 }) %></div>
-        <div class="btn btn-info btn-lg"><%= link_to 'New Commute', new_post_path(:post =>{:created_at => DateTime.now , :entry_type => 2 }) %></div>
-        <div class="btn btn-info btn-lg"><%= link_to 'New Other Activity', new_post_path(:post =>{:created_at => DateTime.now , :entry_type => 3 }) %></div>
-    </section>
     <% else %>
         <!-- not logged in view -->
        <div class="row justify-content-center">
