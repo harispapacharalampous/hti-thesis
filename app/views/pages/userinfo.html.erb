@@ -107,7 +107,7 @@ Licensed under MIT
                             <% else %>
                                 <div class="row ui raised segment">
                                     <p class="ui ribbon labelui ribbon label large blue">How your physical activity mood changes over time:</p>
-                                    <%= line_chart current_user.posts.pluck("created_at, affect"),xmin:"2020-01-01", xmax: "2021-01-01", height: "500px",width:"900px", colors: ["#f77e6e"] %>
+                                    <%= line_chart current_user.posts.pluck("created_at, affect"),xmin:"2020-01-01", xmax: "2021-01-01", colors: ["#f77e6e"] %>
                                 </div>
                                 <br>
                             <% end %>
@@ -139,7 +139,7 @@ Licensed under MIT
                             <% else %>
                                 <div class="row ui raised segment">
                                     <p class="ui ribbon label large blue">How your physical activity experiences change over time:</p>
-                                    <%= line_chart current_user.posts.pluck("created_at, entertainment"),xmin:"2020-01-01", xmax: "2021-01-01", colors: ["#2CA"], height: "500px",width:"900px" %>
+                                    <%= line_chart current_user.posts.pluck("created_at, entertainment"),xmin:"2020-01-01", xmax: "2021-01-01", colors: ["#2CA"] %>
                                 </div>
                                 <br>
                             <% end %>
