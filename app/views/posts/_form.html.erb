@@ -10,53 +10,73 @@
       </ul>
     </div>
   <% end %>
+<!-- html form components -->
 
+<!-- semantic ui form -->
+<div class="ui form">
+  <h4 class="ui dividing header">Activity Entry</h4>
   <div class="field">
-    <%= form.label :title %>
-      <div class = "inputs_forty">
-    <%= form.text_field :title %>
+    <label><%= form.label :title %></label>
+      <div class="field">
+          <div class = "inputs_forty">
+            <%= form.text_field :title, placeholder: "activity title" %>
+        </div>
       </div>
   </div>
 
   <div class="field">
-    <%= form.label :body %>
-      <div class = "inputs_forty">
-    <%= form.text_area :body %>
+    <label><%= form.label :body %></label>
+      <div class="field">
+          <div class = "inputs_forty">
+            <%= form.text_area :body, rows: "4" %>
+          </div>
       </div>
   </div>
 
   <div class="field">
-    <%= form.label :entry_type %>
-      <div class = "inputs_forty">
-    <%= form.select :entry_type ,  [['WALK',1],['COMMUTE',2],['OTHER',3]] %>
+    <label><%= form.label :entry_type %></label>
+      <div class="field">
+        <div class = "inputs_forty">
+            <%= form.select :entry_type ,  [['WALK',1],['COMMUTE',2],['OTHER',3]] %>
+        </div>
       </div>
   </div>
 
   <div class="field">
-    <%= form.label :created_at %>
-    <div class = "inputs_forty">
-    <%= form.datetime_field :created_at %>
+    <label><%= form.label :created_at %></label>
+      <div class="field">
+        <div class = "inputs_forty">
+            <%= form.datetime_field :created_at %>
+        </div>
       </div>
   </div>
 
-  <div class="field">
-    <div>To what extend did you enjoy this activity?</div><br>
-    <%#= form.text_field :entertainment, as: :integer %>
-    <div class = "inputs_forty">
-    <span class="likert-labels">Not at all</span><%= form.range_field :entertainment, as: :slider, :in => -3..3  , :step => 1 %><span class="likert-labels">A lot</span>
-    </div><br>
+    <br>
+  <div class="center field">
+    <label>To what extend did you enjoy this activity?</label>
+      <div class="field">
+        <div class = "inputs_forty">
+            <span class="likert-labels">Not at all</span><%= form.range_field :entertainment, as: :slider, :in => -3..3  , :step => 1 %><span class="likert-labels">A lot</span>
+        </div>
+      </div>
+  </div>
+
+    <br>
+  <div class="center field">
+    <label>How did you feel during this activity ?</label>
+      <div class="field">
+        <div class = "inputs_forty">
+            <span class="likert-labels">Not well</span><%= form.range_field :affect, as: :slider, :in => -3..3 , :step => 1 %><span class="likert-labels">Very well</span>
+        </div>
+      </div>
   </div>
 
 
-  <div class="field">
-    <div>How did you feel during this activity ?</div><br>
-    <%#= form.text_field :affect, as: :integer %>
-    <div class = "inputs_forty">
-    <span class="likert-labels">Not well</span><%= form.range_field :affect, as: :slider, :in => -3..3 , :step => 1 %><span class="likert-labels">Very well</span>
-    </div><br>
+  <div class="actions center">
+    <%= form.submit 'Submit entry', :class => 'ui button' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+</div>
+<!-- end of semantic ui form -->
+
 <% end %>
