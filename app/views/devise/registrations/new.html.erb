@@ -4,7 +4,7 @@
 
 <%= f.hidden_field :condition, value: SecureRandom.random_number(2)  %>
 <div class="ui form center segment">
-  <h4 class="ui dividing header">New user sign up</h4>
+  <h4 class="ui header">New user sign up</h4>
 
     <div class=" two inline fields ui segment">
         <div class=" field">
@@ -35,9 +35,7 @@
             </div>
               <div class="field">
                 <div class = "inputs_forty">
-                    <div class="field">
                         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-                    </div>
                 </div>
               </div>
     </div>

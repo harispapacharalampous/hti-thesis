@@ -16,7 +16,7 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
 <div class="ui form center segment">
-  <h4 class="ui dividing header">New user sign up</h4>
+  <h4 class="ui  header">New user sign up</h4>
 
        <div class=" two inline fields ui segment">
         <div class=" field">
@@ -58,9 +58,8 @@
             </div>
               <div class="field">
                 <div class = "inputs_forty">
-                    <div class="field">
                         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-                    </div>
+
                 </div>
               </div>
     </div>
@@ -108,14 +107,9 @@
 
 <div class="ui segment center">
     <h3 class="ui dividing header">Cancel my account</h3>
-
-
-<p>Unhappy? You can always cancel your account.</p>
-
-
-
+    <p>Unhappy? Give us another chance or you can always cancel your account.</p>
     <div class="ui buttons">
-      <%= link_to "Back to Home", :back, class: 'ui button' %>
+      <%= link_to "Back to Home", root_path, class: 'ui button' %>
       <div class="or" data-text="or"></div>
       <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "ui negative button"%>
     </div>
