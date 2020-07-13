@@ -16,11 +16,11 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
 <div class="ui form center segment">
-  <h4 class="ui  header">New user sign up</h4>
+  <h4 class="ui  header">Edit user preferences</h4>
 
        <div class=" two inline fields ui segment">
         <div class=" field">
-            <label><%= f.label :email %></label><i>(hint: You cannot change your username.)</i>
+            <label><%= f.label :email %></label><i><!--(hint: You cannot change your username.)--></i>
         </div>
           <div class="field">
             <div class = "inputs_forty">
@@ -36,16 +36,13 @@
     <% end %>
 
 
-
-
-
-
       <div class="four inline fields ui segment">
+           <div class="ui right pointing label"><i>(leave blank if you don't want to change it)</i></div>
             <div class="field">
             <label><%= f.label :password %>
                     <% if @minimum_password_length %>
                     <em>(<%= @minimum_password_length %> characters minimum)</em>
-                    <% end %></label><i>(leave blank if you don't want to change it)</i>
+                    <% end %></label>
             </div>
           <div class="field">
             <div class = "inputs_forty">
@@ -58,11 +55,35 @@
             </div>
               <div class="field">
                 <div class = "inputs_forty">
-                        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                        <%= f.password_field :password_confirmation, autocomplete: "current-password" %>
 
                 </div>
               </div>
     </div>
+
+    <div class="two inline fields ui segment">
+        <div class="field">
+                <label><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br></label>
+        </div>
+        <div class="field">
+            <div class = "inputs_forty">
+                        <%= f.password_field :current_password, autocomplete: "current-password" %>
+
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
     <div class="four inline fields ui segment">
             <div class="field ">
                 <label> <%= f.label "Maximun daily coffee intake :" %></label>
