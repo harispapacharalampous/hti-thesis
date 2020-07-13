@@ -25,7 +25,12 @@ Licensed under MIT
                     <!-- SIDEBAR BUTTONS -->
                     <div class="row justify-content-center">
                     <div class="profile-userbuttons">
-                        <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:"ui negative button"%>
+                        <div class="field">
+                        <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:"ui negative medium button"%>
+                        </div>
+                        <div class="field">
+                        <%= link_to "Edit user preferences", edit_user_registration_path, class:"ui small basic button"%>
+                        </div>
                     </div>
                     </div>
                     <br>
