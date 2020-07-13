@@ -14,61 +14,111 @@
     <!-- condition -->
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-    <br>
-  <div class="field">
-    <%= f.label :email %><i>(hint: You cannot change your username.)</i><br>
-    <%= f.email_field :email, autocomplete: "email", disabled: true %>
-  </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-    <br>
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br>
-      <em><%= @minimum_password_length %> characters minimum</em>
+<div class="ui form center segment">
+  <h4 class="ui dividing header">New user sign up</h4>
+
+       <div class=" two inline fields ui segment">
+        <div class=" field">
+            <label><%= f.label :email %></label><i>(hint: You cannot change your username.)</i>
+        </div>
+          <div class="field">
+            <div class = "inputs_forty">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", disabled: true %>
+            </div>
+          </div>
+    </div>
+
+
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
-  </div>
-    <br>
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-    <br>
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br>
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-    <br>
-  <div class="field">
-    <%= f.label "Maximun daily coffee intake :" %>
-    <%= f.number_field :climit, autofocus: true %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label "Maximun daily water intake :" %>
-    <%= f.number_field :wlimit, autofocus: true %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label :walkpref %>
-    <%= f.check_box :walkpref, as: :integer, autofocus: true %>
-    <%= f.label :commutepref %>
-    <%= f.check_box :commutepref, as: :integer, autofocus: true %>
+
+
+
+
+
+
+      <div class="four inline fields ui segment">
+            <div class="field">
+            <label><%= f.label :password %>
+                    <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %></label><i>(leave blank if you don't want to change it)</i>
+            </div>
+          <div class="field">
+            <div class = "inputs_forty">
+                <%= f.password_field :password, autocomplete: "new-password" %>
+            </div>
+          </div>
+
+            <div class="field">
+                <label><%= f.label :password_confirmation %></label>
+            </div>
+              <div class="field">
+                <div class = "inputs_forty">
+                    <div class="field">
+                        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                    </div>
+                </div>
+              </div>
+    </div>
+    <div class="four inline fields ui segment">
+            <div class="field ">
+                <label> <%= f.label "Maximun daily coffee intake :" %></label>
+            </div>
+          <div class="field">
+            <div class = "inputs_forty">
+                    <%= f.number_field :climit, autofocus: true %>
+            </div>
+          </div>
+            <div class="field ">
+                <label> <%= f.label "Minimum daily water intake :" %></label>
+            </div>
+          <div class="field">
+            <div class = "inputs_forty">
+                    <%= f.number_field :wlimit, autofocus: true %>
+            </div>
+          </div>
+    </div>
+    <div class="four inline fields ui segment">
+        <div class="field">
+            <%= f.label "Would you like to do walking as an activity:" %>
+        </div>
+        <div class="field">
+            <%= f.check_box :walkpref, as: :integer, autofocus: true, class: "ui checkbox" %>
+        </div>
+        <div class="field">
+            <%= f.label "Would you like to do commuting as an activity:" %>
+        </div>
+        <div class="field">
+            <%= f.check_box :commutepref, as: :integer, autofocus: true, class: "ui checkbox" %>
+        </div>
+
   </div>
 
-  <br>
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+  <div class="actions center">
+        <%= f.submit 'Update', :class => 'ui button' %>
+    </div>
+</div>
+<!-- end of semantic ui form -->
+
 <% end %>
 
-<br>
-<h3>Cancel my account</h3>
+<div class="ui segment center">
+    <h3 class="ui dividing header">Cancel my account</h3>
 
-<p>Unhappy? You can always cancel your account. <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back to Home", :back %>
+<p>Unhappy? You can always cancel your account.</p>
+
+
+
+    <div class="ui buttons">
+      <%= link_to "Back to Home", :back, class: 'ui button' %>
+      <div class="or" data-text="or"></div>
+      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "ui negative button"%>
+    </div>
+</div>
+
+
