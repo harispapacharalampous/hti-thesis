@@ -119,11 +119,14 @@ Licensed under MIT
                             <!-- chart entertainment for posts -->
                             <% if current_user.condition == 1 %>
                                     <!-- here -->
+
                                 <!-- option 1: ugly overlaid graph with library settings -->
                                 <%#= line_chart [
                                   {name: "All users", data: Post.pluck("created_at, entertainment")},
                                   {name: "Your data", data: current_user.posts.pluck("created_at, entertainment")}
                                 ], library:  lib_set_entertainment %>
+                                <!-- end of ugly overlaid graph with library settings -->
+
                                 <!-- option 2: WORKING divided graph with avg and individual lines -->
                                 <div class="row ui raised  segment">
                                     <p class="ui ribbon label large blue">How other users' experiences relate to yours :</p>
@@ -140,7 +143,16 @@ Licensed under MIT
                                         ytitle: "Entertainment"
                                      %>
                                 </div>
+                                <!-- end of divided graph with avg and individual lines -->
 
+                                <!-- option 3-- multi line graph -->
+                                <div class="row ui raised  segment">
+                                    <p class="ui ribbon label large blue">How other users' experiences relate to yours :</p>
+                                    <%= line_chart User.all.map { |user|
+                                        {name: user.username, data: user.posts.group_by_week(:created_at).average(:entertainment)}
+                                    } %>
+                                </div>
+                                <!-- end of multi line graph -->
                             <% else %>
                                 <div class="row ui raised segment">
                                     <p class="ui ribbon label large blue">How your physical activity experiences change over time:</p>
@@ -148,7 +160,8 @@ Licensed under MIT
                                 </div>
                                 <br>
                             <% end %>
-                            <!-- coffee and water ffeedback charts -->
+
+                            <!-- coffee and water feedback charts -->
                             <div class="row ui raised segment">
                                     <div class="col">
                                         <!-- chart for coffee -->
@@ -161,7 +174,7 @@ Licensed under MIT
                                             <%= column_chart current_user.waters.group_by_day_of_week(:created_at, format: "%a",range: DateTime.now.at_beginning_of_week..DateTime.now).count, colors: ["#87b4f8"], height: "300px",width:"450px", min: 0, max: current_user.wlimit %>
                                     </div>
                             </div>
-
+                            <!-- end of coffee and water feedback charts -->
 
 
                         <% else %>
