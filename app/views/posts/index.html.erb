@@ -1,80 +1,104 @@
 <div class="container">
-
+<!-- logged in  with posts-->
 <% if current_user %>
-
-<div class="column">
-    <div class="ui middle aligned center aligned grid ">
-        <div class="row">
-            <div class="eleven wide column">
-              <% if current_user && current_user.admin %>
-                    <!-- admin view -->
-                    <% @posts.order(created_at: :desc).each do |post| %>
-                        <div class="ui secondary segment ">
-                            <!-- post segment -->
-                            <div class="row">
-                            <h2 class="ui medium header" style="padding-left: 20px"> <%= post.created_at.strftime("%A, %d %B %Y") %> </h2>
-                            </div>
-                            <div class="row">
-                                <div class="ui header small left floated" style="padding-left: 20px"><br>
-                                    <% if post.entry_type==1 && post.created_at.hour > 12 %>
-                                       Afternoon Walk
-                                    <% elsif post.entry_type==1 && post.created_at.hour < 12 %>
-                                       Morning Walk
-                                    <% elsif post.entry_type==2 && post.created_at.hour > 12 %>
-                                        Afternoon Commute
-                                    <% elsif post.entry_type==2 && post.created_at.hour < 12 %>
-                                        Morning Commute
-                                    <% end %>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="ui left floated" style="padding-left: 20px"><br><span class="ui  header">Description :</span> <%= post.body %></div>
-                            </div>
-
-                            <div class="row"></div>
-                            <br>affect:<%= post.affect %>
-                            <br>entertainment:<%= post.entertainment %>
-                            <br>user id:<%= post.user_id %><br>
-                            <div style="float:right"><div class="ui buttons"><%= link_to 'Show', post , class: 'ui button'%><%= link_to 'Edit', edit_post_path(post), class: 'ui button' %><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' %></div></div>
-
+    <% if current_user.posts.empty?%>
+    <div class="column">
+        <div class="ui middle aligned center aligned grid ">
+            <div class="row" style="margin-top: 10%">
+                <div class="eleven wide column">
+                        <div class="ui huge label">
+                            <i class="exclamation icon"></i> Sorry, your activities feed looks empty...
                         </div>
-                    <% end %>
-                    <!-- admin view end -->
-              <% else %>
-                    <!-- guest view -->
-                    <% current_user.posts.order(created_at: :desc).each do |post| %>
-                    <div class="ui secondary segment ">
-                        <!-- post segment -->
-                        <div class="row">
-                            <h2 class="ui medium header" style="padding-left: 20px"> <%= post.created_at.strftime("%A, %d %B %Y") %> </h2>
-                            </div>
-                            <div class="row">
-                                <div class="ui header small left floated" style="padding-left: 20px"><br>
-                                    <% if post.entry_type==1 && post.created_at.hour > 12 %>
-                                       Afternoon Walk
-                                    <% elsif post.entry_type==1 && post.created_at.hour < 12 %>
-                                       Morning Walk
-                                    <% elsif post.entry_type==2 && post.created_at.hour > 12 %>
-                                        Afternoon Commute
-                                    <% elsif post.entry_type==2 && post.created_at.hour < 12 %>
-                                        Morning Commute
-                                    <% end %>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="ui left floated" style="padding-left: 20px"><br><span class="ui  header">Description :</span> <%= post.body %></div>
-                            </div>
-
-                         <div class="floated center"><div class="ui buttons"><%= link_to 'Show', post , class: 'ui button'%><%= link_to 'Edit', edit_post_path(post), class: 'ui button' %></div></div>
+                    <br>
+                    <br>
+                    <div class="ui basic label big">
+                    Check you activities plan <i class="calendar alternate outline icon"></i>and log activities here: <%= link_to 'Plan', "/pages/plans" , class: 'ui secondary basic button' %>
                     </div>
-                    <% end %>
-                    <!-- guest view end -->
-              <% end %>
+                    <br>
+                    <br>
+                    <div class="ui basic label big">
+                    Or, directly log an activity through here: <%= link_to 'New entry', "/pages/newentrypreface" , class: 'ui secondary basic button' %>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
     <% else %>
+    <div class="column">
+        <div class="ui middle aligned center aligned grid ">
+            <div class="row">
+                <div class="eleven wide column">
+                  <% if current_user && current_user.admin %>
+                        <!-- admin view -->
+                        <% @posts.order(created_at: :desc).each do |post| %>
+                            <div class="ui secondary segment ">
+                                <!-- post segment -->
+                                <div class="row">
+                                <h2 class="ui medium header" style="padding-left: 20px"> <%= post.created_at.strftime("%A, %d %B %Y") %> </h2>
+                                </div>
+                                <div class="row">
+                                    <div class="ui header small left floated" style="padding-left: 20px"><br>
+                                        <% if post.entry_type==1 && post.created_at.hour > 12 %>
+                                           Afternoon Walk
+                                        <% elsif post.entry_type==1 && post.created_at.hour < 12 %>
+                                           Morning Walk
+                                        <% elsif post.entry_type==2 && post.created_at.hour > 12 %>
+                                            Afternoon Commute
+                                        <% elsif post.entry_type==2 && post.created_at.hour < 12 %>
+                                            Morning Commute
+                                        <% end %>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="ui left floated" style="padding-left: 20px"><br><span class="ui  header">Description :</span> <%= post.body %></div>
+                                </div>
+
+                                <div class="row"></div>
+                                <br>affect:<%= post.affect %>
+                                <br>entertainment:<%= post.entertainment %>
+                                <br>user id:<%= post.user_id %><br>
+                                <div style="float:right"><div class="ui buttons"><%= link_to 'Show', post , class: 'ui button'%><%= link_to 'Edit', edit_post_path(post), class: 'ui button' %><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' %></div></div>
+
+                            </div>
+                        <% end %>
+                        <!-- admin view end -->
+                  <% else %>
+                        <!-- guest view -->
+                        <% current_user.posts.order(created_at: :desc).each do |post| %>
+                        <div class="ui secondary segment ">
+                            <!-- post segment -->
+                            <div class="row">
+                                <h2 class="ui medium header" style="padding-left: 20px"> <%= post.created_at.strftime("%A, %d %B %Y") %> </h2>
+                                </div>
+                                <div class="row">
+                                    <div class="ui header small left floated" style="padding-left: 20px"><br>
+                                        <% if post.entry_type==1 && post.created_at.hour > 12 %>
+                                           Afternoon Walk
+                                        <% elsif post.entry_type==1 && post.created_at.hour < 12 %>
+                                           Morning Walk
+                                        <% elsif post.entry_type==2 && post.created_at.hour > 12 %>
+                                            Afternoon Commute
+                                        <% elsif post.entry_type==2 && post.created_at.hour < 12 %>
+                                            Morning Commute
+                                        <% end %>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="ui left floated" style="padding-left: 20px"><br><span class="ui  header">Description :</span> <%= post.body %></div>
+                                </div>
+
+                             <div class="floated center"><div class="ui buttons"><%= link_to 'Show', post , class: 'ui button'%><%= link_to 'Edit', edit_post_path(post), class: 'ui button' %></div></div>
+                        </div>
+                        <% end %>
+                        <!-- guest view end -->
+                  <% end %>
+                </div>
+            </div>
+        </div>
+</div>
+    <% end %>
+<!-- not logged in -->
+<% else %>
         <!-- not logged in view -->
        <div class="row justify-content-center">
                 ** login to add posts **
@@ -89,6 +113,6 @@
                 </div>
             </div>
         </div>
-    <% end %>
+<% end %>
 
 </div>

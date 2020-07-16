@@ -33,14 +33,25 @@
       </div>
   </div>
 
+<% if current_user.condition ==1%>
+     <div class="field">
+    <label><%= form.label :entry_type %></label>
+      <div class="field">
+        <div class = "inputs_forty">
+            <%= form.select :entry_type ,  [['Walk',1],['Bicycle Commute',2],['Stairs',3],['Stretching',4],['Yoga',5],['Elliptical',6],['Gardening',7],['Housework',8]] %>
+        </div>
+      </div>
+  </div>
+<% else %>
   <div class="field">
     <label><%= form.label :entry_type %></label>
       <div class="field">
         <div class = "inputs_forty">
-            <%= form.select :entry_type ,  [['WALK',1],['COMMUTE',2],['OTHER',3]] %>
+            <%= form.select :entry_type ,  [['Walk',1],['Bicycle Commute',2],['Other',3]] %>
         </div>
       </div>
   </div>
+<% end %>
 
   <div class="field">
     <label><%= form.label :created_at %></label>
