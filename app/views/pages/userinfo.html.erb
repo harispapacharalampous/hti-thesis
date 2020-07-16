@@ -148,9 +148,25 @@ Licensed under MIT
                                 <!-- option 3-- multi line graph -->
                                 <div class="row ui raised  segment">
                                     <p class="ui ribbon label large blue">How other users' experiences relate to yours :</p>
+
+                                    <!-- UNDER CONSTRUCTION -->
+                                    <% userswithposts = []; User.all.each do |user|
+                                         if user.posts.count != 0
+                                             userswithposts.push user.id
+                                         end
+                                        end %>
+                                    <% @usr1 = %>
+                                     <% line_chart [
+                                        {name: User.find(userswithposts.sample).username, data: User.find(userswithposts.sample).posts.group_by_week(:created_at).average(:entertainment)},
+                                        {name: User.find(userswithposts.sample).username, data: User.find(userswithposts.sample).posts.group_by_week(:created_at).average(:entertainment)}
+                                    ], colors: ['#696969', '#3366cc'] %>
+
+                                     <!-- UNDER CONSTRUCTION -->
+
                                     <%= line_chart User.all.map { |user|
                                         {name: user.username, data: user.posts.group_by_week(:created_at).average(:entertainment)}
-                                    } %>
+                                    }%>
+
                                 </div>
                                 <!-- end of multi line graph -->
                             <% else %>
