@@ -31,15 +31,21 @@ class User < ApplicationRecord
     private
         #callback cue'd function after creating a new profile
         def populate_meetings
-            d = DateTime.now
-            #generate 5 events of  1h duration in 5 consecutive days type 1 (run)
-            for b in 0..4 do
-                self.meetings.create( name: 'Walk ' + b.to_s, activitytype: '1', start_time: (d + b.day ).strftime("%Y-%m-%d %H:%M"), end_time: (d + b.day + 1.hour).strftime("%Y-%m-%d %H:%M"), user_id: self);
+            self.meetings.destroy_all;
+            d = DateTime.now;
+            walk=[];
+            commute=[];
+
+            walk = [ d,(d+1.day),(d+2.day),(d+3.day),(d+4.day),(d+5.day),(d+8.day),(d+9.day),(d+10.day),(d+11.day),(d+12.day];
+            for item in walk do
+                self.meetings.create( name: " 20' Walk", activitytype: '1', start_time: item.strftime("%Y-%m-%d %H:%M"), end_time: (item + 1.hour).strftime("%Y-%m-%d %H:%M"), user_id: self);
             end
-            #generate 5 events of  1h duration in 5 consecutive days type 2 (commute)
-            for c in 0..4 do
-                self.meetings.create( name: 'Commute ' + c.to_s, activitytype: '2', start_time: (d + c.day + 2.hour ).strftime("%Y-%m-%d %H:%M"), end_time: (d + c.day + 3.hour).strftime("%Y-%m-%d %H:%M"), user_id: self);
+
+            commute = [ d,(d+2.day),(d+4.day),(d+6.day),(d+8.day),(d+10.day),(d+12.day),(d+14.day)];
+            for item in commute do
+                self.meetings.create( name: ' Commute ', activitytype: '2', start_time: item.strftime("%Y-%m-%d %H:%M"), end_time: (item + 1.hour).strftime("%Y-%m-%d %H:%M"), user_id: self);
             end
+
 
         end
 
