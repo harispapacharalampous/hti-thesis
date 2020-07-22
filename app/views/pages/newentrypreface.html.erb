@@ -4,7 +4,7 @@
     <div class="ui middle aligned center aligned grid ">
     <div class="row">
     <div class="eleven wide column">
-        <% if current_user.condition==1%>
+        <% if current_user && current_user.condition==1%>
             <%= link_to "NEW ENTRY", new_post_path(:post => {:created_at => DateTime.now }), class: "ui secondary segment larger-text", style: 'width:100%'%>
         <% else %>
             <%= link_to "WALK", new_post_path(:post => {:created_at => DateTime.now, :entry_type => 1 }), class: "ui secondary segment larger-text", style: 'width:100%'%>

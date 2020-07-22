@@ -49,6 +49,7 @@ Licensed under MIT
                 <% end %>
 				<!-- END SIDEBAR BUTTONS -->
                 <!-- USER water and coffee and add actions-->
+                <% if current_user %>
                 <div class="row justify-content-center">
                     <div class="col-md-auto">
                         <!-- <p class="h5">Water drank today:</p>
@@ -70,6 +71,7 @@ Licensed under MIT
                         <br>
                     </div>
                 </div>
+                <% end %>
                 <!-- USER water and coffee END -->
 
                 </div>
@@ -86,7 +88,7 @@ Licensed under MIT
                         <%= javascript_include_tag "//www.gstatic.com/charts/loader.js", "chartkick" %>
                         <% if current_user %>
                             <!-- chart affect for posts -->
-                            <% if current_user.condition == 1 %>
+                            <% if current_user && current_user.condition == 1 %>
                                 <!-- option 1: ugly overlaid graph with library settings -->
                                 <%#= line_chart [
                                   {name: "All users", data: Post.pluck("created_at, affect")},

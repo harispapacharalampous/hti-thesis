@@ -36,7 +36,7 @@ class User < ApplicationRecord
             walk=[];
             commute=[];
 
-            walk = [ d,(d+1.day),(d+2.day),(d+3.day),(d+4.day),(d+5.day),(d+8.day),(d+9.day),(d+10.day),(d+11.day),(d+12.day];
+            walk = [ d,(d+1.day),(d+2.day),(d+3.day),(d+4.day),(d+5.day),(d+8.day),(d+9.day),(d+10.day),(d+11.day),(d+12.day)];
             for item in walk do
                 self.meetings.create( name: " 20' Walk", activitytype: '1', start_time: item.strftime("%Y-%m-%d %H:%M"), end_time: (item + 1.hour).strftime("%Y-%m-%d %H:%M"), user_id: self);
             end
