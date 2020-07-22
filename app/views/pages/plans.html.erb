@@ -6,6 +6,18 @@
             <% meetings.each do |meeting| %>
                 <div>
                     <!-- commented out the filtering to check the populate_meetings func -->
+                         <% if meeting.activitytype == 0 %>
+                                <!-- passing params to new post !-->
+                                <div class="event">
+                                    <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %><i class="icon-chevron-right icon-position"></i>
+                                </div>
+                                <!-- autonomy condition -->
+                                <% if current_user.condition == 1 %>
+                                    <div class="btn ">
+                                        <%= link_to "Edit", edit_meeting_path(meeting.id) %>
+                                    </div>
+                                <% end %>
+                            <% end %>
                         <% if current_user.walkpref == 1 %>
                             <% if meeting.activitytype == 1 %>
                                 <!-- passing params to new post !-->

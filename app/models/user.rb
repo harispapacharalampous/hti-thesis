@@ -35,15 +35,21 @@ class User < ApplicationRecord
             d = DateTime.now;
             walk=[];
             commute=[];
-
-            walk = [ d,(d+1.day),(d+2.day),(d+3.day),(d+4.day),(d+5.day),(d+8.day),(d+9.day),(d+10.day),(d+11.day),(d+12.day)];
-            for item in walk do
-                self.meetings.create( name: " 20' Walk", activitytype: '1', start_time: item.strftime("%Y-%m-%d %H:%M"), end_time: (item + 1.hour).strftime("%Y-%m-%d %H:%M"), user_id: self);
-            end
-
+            walk = [ d,(d+1.day),(d+2.day),(d+3.day),(d+4.day),(d+7.day),(d+8.day),(d+9.day),(d+10.day),(d+11.day),(d+14.day)];
             commute = [ d,(d+2.day),(d+4.day),(d+6.day),(d+8.day),(d+10.day),(d+12.day),(d+14.day)];
-            for item in commute do
-                self.meetings.create( name: ' Commute ', activitytype: '2', start_time: item.strftime("%Y-%m-%d %H:%M"), end_time: (item + 1.hour).strftime("%Y-%m-%d %H:%M"), user_id: self);
+            activity = [ d,(d+2.day),(d+4.day),(d+6.day),(d+8.day),(d+10.day),(d+12.day),(d+14.day)];
+
+            if self.condition == 0
+                for item in walk do
+                    self.meetings.create( name: " 20' Walk", activitytype: '1', start_time: item.strftime("%Y-%m-%d %H:%M"), end_time: (item + 1.hour).strftime("%Y-%m-%d %H:%M"), user_id: self);
+                end
+                for item in commute do
+                    self.meetings.create( name: ' Commute ', activitytype: '2', start_time: item.strftime("%Y-%m-%d %H:%M"), end_time: (item + 1.hour).strftime("%Y-%m-%d %H:%M"), user_id: self);
+                end
+            elsif self.condition==1
+                for item in activity do
+                    self.meetings.create( name: " 15' Activity",activitytype: '0', start_time: item.strftime("%Y-%m-%d %H:%M"), end_time: (item + 1.hour).strftime("%Y-%m-%d %H:%M"), user_id: self);
+                end
             end
 
 
