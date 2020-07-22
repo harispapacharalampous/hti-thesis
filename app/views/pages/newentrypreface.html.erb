@@ -1,20 +1,78 @@
 <div class="container">
-    <div style="margin-top:20%">
     <div class="column">
-    <div class="ui middle aligned center aligned grid ">
-    <div class="row">
-    <div class="eleven wide column">
-        <% if current_user && current_user.condition==1%>
-            <%= link_to "NEW ENTRY", new_post_path(:post => {:created_at => DateTime.now }), class: "ui secondary segment larger-text", style: 'width:100%'%>
-        <% else %>
-            <%= link_to "WALK", new_post_path(:post => {:created_at => DateTime.now, :entry_type => 1 }), class: "ui secondary segment larger-text", style: 'width:100%'%>
-            <%= link_to new_post_path(:post => {:created_at => DateTime.now, :entry_type => 2 }), class: "ui secondary segment larger-text", style: 'width:100%' do%> COMMUTE<%end%>
-            <%= link_to "OTHER", new_post_path(:post => {:created_at => DateTime.now, :entry_type => 3 }), class: "ui secondary segment larger-text", style: 'width:100%'%>
-        <% end %>
 
+    <!-- info text -->
+    <div class="ui middle aligned center aligned grid ">
+        <div class="row">
+            <div class="eleven wide column">
+                <!--h1 class="ui header aligned left">New entry</h1-->
+                <div class="ui divided items secondary segment">
+                     <div class="item">
+                        <div class="ui small image">
+                          <img src="https://cdn.shopify.com/s/files/1/0078/0225/7497/files/mf-doom-png-7_1200x630.png?v=1560287131">
+                        </div>
+                        <div class="content">
+                          <div class="header">Astrology Camp</div>
+                          <div class="meta">
+                            <span class="price">$1600</span>
+                            <span class="stay">6 Weeks</span>
+                          </div>
+                          <div class="description">
+                            <p></p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                          <div class="header">Astrology Camp</div>
+                          <div class="meta">
+                            <span class="price">$1600</span>
+                            <span class="stay">6 Weeks</span>
+                          </div>
+                          <div class="description">
+                            <p></p>
+                          </div>
+                        </div>
+                        <div class="ui small image">
+                          <img src="https://cdn.shopify.com/s/files/1/0078/0225/7497/files/mf-doom-png-7_1200x630.png?v=1560287131">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="ui small image">
+                          <img src="https://cdn.shopify.com/s/files/1/0078/0225/7497/files/mf-doom-png-7_1200x630.png?v=1560287131">
+                        </div>
+                        <div class="content">
+                          <div class="header">Astrology Camp</div>
+                          <div class="meta">
+                            <span class="price">$1600</span>
+                            <span class="stay">6 Weeks</span>
+                          </div>
+                          <div class="description">
+                            <p></p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
-    </div>
-    </div>
+    <!-- info text -->
+
+    <!-- button -->
+        <div class="ui middle aligned center aligned grid ">
+            <div class="row">
+                <div class="eleven wide column">
+                    <% if current_user && current_user.condition==1%>
+                        <%= link_to "NEW ENTRY", new_post_path(:post => {:created_at => DateTime.now }), class: "ui secondary segment larger-text", style: 'width:100%'%>
+                    <% else %>
+                        <%= link_to "WALK", new_post_path(:post => {:created_at => DateTime.now, :entry_type => 1 }), class: "ui secondary segment larger-text", style: 'width:100%'%>
+                        <%= link_to new_post_path(:post => {:created_at => DateTime.now, :entry_type => 2 }), class: "ui secondary segment larger-text", style: 'width:100%' do%> COMMUTE<%end%>
+                        <%= link_to "OTHER", new_post_path(:post => {:created_at => DateTime.now, :entry_type => 3 }), class: "ui secondary segment larger-text", style: 'width:100%'%>
+                    <% end %>
+
+                </div>
+            </div>
+        </div>
+    <!-- button -->
     </div>
 </div>
