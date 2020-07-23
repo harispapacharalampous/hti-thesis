@@ -1,0 +1,41 @@
+<div class="container ">
+    <p id="notice"><%= notice %></p>
+
+    <p>
+      <strong>Title:</strong>
+      <%= @post.title %>
+    </p>
+
+    <p>
+      <strong>Body:</strong>
+      <%= @post.body %>
+    </p>
+
+    <p>
+      <strong>Entry type:</strong>
+        <% if @post.entry_type == 1 %>
+            Walk
+        <% elsif @post.entry_type == 2 %>
+            Commute
+        <% elsif @post.entry_type == 3 %>
+            Other
+        <% end %>
+    </p>
+
+    <p>
+      <strong>Affect:</strong>
+      <%= @post.affect %>
+    </p>
+    <p>
+      <strong>Entertainment:</strong>
+      <%= @post.entertainment %>
+    </p>
+    <p>
+      <strong>Created at:</strong>
+      <%= @post.created_at.day %> / <%= @post.created_at.month %> / <%= @post.created_at.year %>
+    </p>
+
+    <%= link_to 'Edit', edit_post_path(@post)%> |
+    <%= link_to 'Back', posts_path %>
+
+</div>

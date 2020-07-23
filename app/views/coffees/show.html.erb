@@ -1,0 +1,15 @@
+<p>
+  <strong>Measurement type:</strong>
+    <%if @coffee.measurement_type ==1 %>
+            Cup
+    <% elsif @coffee.measurement_type == 2 %>
+            ml
+    <% end %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @coffee.quantity %>
+</p>
+
+<%= link_to 'Back', "/pages/userinfo" %>

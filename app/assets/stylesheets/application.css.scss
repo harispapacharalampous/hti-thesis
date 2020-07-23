@@ -1,0 +1,69 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+// sematic UI css items
+
+$font-family: 'helvetica';
+@import "semantic-ui";
+@import "semantic-ui/collections/menu";
+
+
+
+//overriding SEMANTIC UI
+.ui.secondary.segment{
+    background-color: #5CA4A9 !important ;
+    opacity: 0.82 !important ;
+}
+
+.profile-sidebar{
+    //background-color: #E6EBE0 !important;
+}
+
+//pre existing custom css
+
+.larger-text{
+    font-size: x-large !important;
+}
+
+body{
+    background-color: lightgrey;
+}
+
+.info-box{
+    width: 60%;
+    background-color: black;
+}
+
+
+.newbtn{
+    background-color: lavender;
+}
+.newpost_banner {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-image: url(../images/pattern.png);
+	background-repeat: repeat;
+    width: 50%;
+}
+.center {margin-left: auto; margin-right: auto; text-align: center;}
+
+.center-user-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+/*generated css*/
+@charset "UTF-8";

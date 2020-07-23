@@ -1,0 +1,78 @@
+<% if current_user %>
+    <!-- Signed in view -->
+    <div class="center">
+        <%= week_calendar number_of_weeks: 2, events: current_user.meetings.all do |date, meetings| %>
+            <%= date.strftime("%B") %> <%= date.day %>
+            <% meetings.each do |meeting| %>
+                <div>
+                    <!-- commented out the filtering to check the populate_meetings func -->
+                         <% if meeting.activitytype == 0 %>
+                                <!-- passing params to new post !-->
+                                <div class="event">
+                                    <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %><i class="icon-chevron-right icon-position"></i>
+                                </div>
+                                <!-- autonomy condition -->
+                                <% if current_user.condition == 1 %>
+                                    <div class="btn ">
+                                        <%= link_to "Edit", edit_meeting_path(meeting.id) %>
+                                    </div>
+                                <% end %>
+                            <% end %>
+                        <% if current_user.walkpref == 1 %>
+                            <% if meeting.activitytype == 1 %>
+                                <!-- passing params to new post !-->
+                                <div class="event">
+                                    <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %><i class="icon-chevron-right icon-position"></i>
+                                </div>
+                                <!-- autonomy condition -->
+                                <% if current_user.condition == 1 %>
+                                    <div class="btn ">
+                                        <%= link_to "Edit", edit_meeting_path(meeting.id) %>
+                                    </div>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                        <% if current_user.commutepref == 1 %>
+                            <% if meeting.activitytype == 2 %>
+                                <!-- passing params to new post !-->
+                                <div class="event">
+                                    <%= link_to meeting.name, new_post_path(:post => {:title => meeting.name, :created_at => meeting.start_time, :entry_type => meeting.activitytype }) %><i class="icon-chevron-right icon-position"></i>
+                                </div>
+                                <!-- autonomy condition -->
+                                <% if current_user.condition == 1 %>
+                                    <div class="btn ">
+                                        <%= link_to "Edit", edit_meeting_path(meeting.id) %>
+                                    </div>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    <!-- end of filtering -->
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+    <!-- meetings button just for admin and test purposes-->
+    <% if current_user && current_user.admin %>
+    <div class="center">
+        <div class="profile-userbuttons">
+            <a href="<%= meetings_path %>"><button type="button" class="btn btn-success btn-lg"> Meetings </button></a>
+        </div>
+    </div>
+    <% end %>
+    <!-- meetings button end -->
+<% else %>
+        <!-- non signed in option -->
+        <div style="margin-top: 20px;margin-bottom: 20px;">
+             <div class="row justify-content-center">
+                ** login to view plan **
+            </div>
+            <div class="row justify-content-center">
+                <div class="profile-userbuttons" style="margin-right: 20px;">
+                    <a href="<%= new_user_registration_path %>"><button type="button" class="btn btn-success btn-lg"> SIGN UP </button></a>
+                </div>
+                <div class="profile-userbuttons">
+                    <a href="<%= new_user_session_path %>"><button type="button" class="btn btn-success btn-lg"> SIGN IN </button></a>
+                </div>
+            </div>
+        </div>
+<% end %>

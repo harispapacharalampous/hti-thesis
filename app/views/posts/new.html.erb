@@ -1,0 +1,11 @@
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+<div class="container">
+
+
+ <p id="notice"><%= notice %></p>
+    <%= render 'form', post: @post %>
+    <%= link_to 'Back', posts_path %>
+
+
+</div>

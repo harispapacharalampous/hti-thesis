@@ -1,0 +1,29 @@
+<%= form_with(model: water, local: true) do |form| %>
+  <% if water.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(water.errors.count, "error") %> prohibited this water from being saved:</h2>
+
+      <ul>
+        <% water.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <div class="field">
+    <p><b>Measurement Type:</b> Cup</p>
+    <%= form.hidden_field :measurement_type, value: 1 %>
+  </div>
+
+  <div class="field">
+    <p><b>Quantity:</b> 1</p>
+    <%= form.hidden_field :quantity, value: 1 %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

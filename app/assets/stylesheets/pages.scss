@@ -1,0 +1,267 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@charset "UTF-8";
+// custom css
+@import url(https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
+
+.event{
+		background: #ECECEC;
+		border-radius: 15px;
+		padding: 10px 20px;
+		display: block;
+		font-family: arial;
+		font-weight: bold;
+		color:#7f7f7f;
+		text-decoration: none;
+		text-shadow:0px 1px 0px #fff;
+		border:1px solid #a7a7a7;
+		min-width: 100px;
+		margin:0px auto;
+		box-shadow: 0px 2px 1px white inset, 0px -2px 8px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
+		-webkit-transition:box-shadow 0.5s;
+	}
+.icon-position{
+    float: right;
+}
+
+//user profile
+/* Profile container */
+.profile {
+  margin: 20px 0;
+}
+
+/* Profile sidebar */
+.profile-sidebar {
+  padding: 20px 0 10px 0;
+  background: #fff;
+}
+
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+  text-transform: uppercase;
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}
+
+.profile-usermenu {
+  margin-top: 30px;
+}
+
+.profile-usermenu ul li {
+  border-bottom: 1px solid #f0f4f7;
+}
+
+.profile-usermenu ul li:last-child {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+  color: #93a3b5;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+  background-color: #fafcfd;
+  color: #5b9bd1;
+}
+
+.profile-usermenu ul li.active {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+  color: #5b9bd1;
+  background-color: #f6f9fb;
+  border-left: 2px solid #5b9bd1;
+  margin-left: -2px;
+}
+
+/* Profile Content */
+.profile-content {
+  padding: 20px;
+  background: #fff;
+  min-height: 460px;
+}
+
+//calendar
+table thead {
+    font-size: 16px;
+    font-family: verdana, arial, helvetica, sans-serif;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+
+table body {
+    font-size: 14px;
+    font-family: verdana, arial, helvetica, sans-serif;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+
+h1, h2{
+    font-family: verdana, arial, helvetica, sans-serif;
+	letter-spacing: 2px;
+	font-weight: bold;
+    text-decoration: none
+}
+
+.simple-calendar {
+  table {
+    -webkit-border-horizontal-spacing: 0px;
+    -webkit-border-vertical-spacing: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1.5px solid white;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    max-width: 100%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  tr {
+    border-collapse: collapse;
+  }
+
+  th {
+    padding: 15px;
+    border-bottom: 2px solid white;
+    border-collapse: collapse;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-top: 0px none rgb(51, 51, 51);
+    box-sizing: border-box;
+    text-align: center;
+    min-width: 150px;
+    background-color: lightgray;
+  }
+
+  td {
+    padding: 6px;
+    vertical-align: top;
+    width: 14%;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-top-color: white;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color: white;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: white;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: white;
+    border-left-style: solid;
+    border-left-width: 1px;
+  }
+
+  .day {
+    height: 300px;
+    width: 200px;
+    font-weight: 500;
+    padding-top: 20px ;
+
+  }
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {
+    background: #FFFFC0
+  }
+
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {
+    background: repeating-linear-gradient(
+    -55deg,
+    #ddd,
+    #ddd 10px,
+    #fff 10px,
+    #fff 20px
+  );
+  }
+  .next-month {
+     background: repeating-linear-gradient(
+    -55deg,
+    #ddd,
+    #ddd 10px,
+    #fff 10px,
+    #fff 20px
+  );
+  }
+  .current-month {}
+
+  .has-events {}
+
+    .calendar-heading{
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+    .calendar-title{
+        font-size: 30px;
+        font-weight: bold;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .prevnext{
+        font-size: 30px;
+    }
+}
