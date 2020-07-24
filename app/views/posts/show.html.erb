@@ -1,7 +1,6 @@
 <div class="container ">
-    <p id="notice"><%= notice %></p>
-
-    <p>
+    <div class= "ui secondary segment ">
+       <p>
       <strong>Title:</strong>
       <%= @post.title %>
     </p>
@@ -22,20 +21,18 @@
         <% end %>
     </p>
 
-    <p>
-      <strong>Affect:</strong>
-      <%= @post.affect %>
-    </p>
-    <p>
-      <strong>Entertainment:</strong>
-      <%= @post.entertainment %>
-    </p>
+    
     <p>
       <strong>Created at:</strong>
       <%= @post.created_at.day %> / <%= @post.created_at.month %> / <%= @post.created_at.year %>
     </p>
+        
 
-    <%= link_to 'Edit', edit_post_path(@post)%> |
-    <%= link_to 'Back', posts_path %>
-
+    <div class="ui buttons">
+      <%= link_to 'Edit', edit_post_path(@post), class: 'ui button'%>
+      <div class="or"></div>
+      <%= link_to 'Back', posts_path, class: 'ui button' %>
+    </div>
+ 
+    </div>
 </div>
