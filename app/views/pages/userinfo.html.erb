@@ -4,16 +4,10 @@ A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themefores
 Licensed under MIT
 -->
 <div class="container">
-
+            <% if current_user %>
             <div class="ui two column grid segment">
                 <div class="column">
-                    <div class="justify-content-center profile-userpic">
-                            <img src="https://i.pinimg.com/originals/2c/7f/d4/2c7fd4e277d332cf993e93d98906dfd1.png" class="center-user-image img-responsive" alt="user-image">
-                    </div>
-                </div>
-                <div class="column">
                     <!-- SIDEBAR USER TITLE -->
-                    <% if current_user %>
                         <div class="row justify-content-center">
                             <div class="profile-usertitle">
                                 <div class="h3" style="color : #339699">
@@ -35,17 +29,6 @@ Licensed under MIT
                     </div>
                     <br>
                     <br>
-                <% else %>
-                    <div style="margin-top: 20px;margin-bottom: 20px;">
-                    <div class="row justify-content-center">
-                    <div class="profile-userbuttons" style="margin-right: 20px;">
-                        <a href="<%= new_user_registration_path %>"><button type="button" class="btn btn-success btn-lg"> SIGN UP </button></a>
-                    </div>
-                    <div class="profile-userbuttons">
-                        <a href="<%= new_user_session_path %>"><button type="button" class="btn btn-success btn-lg"> SIGN IN </button></a>
-                    </div>
-                    </div>
-                    </div>
                 <% end %>
 				<!-- END SIDEBAR BUTTONS -->
                 <!-- USER water and coffee and add actions-->
@@ -151,23 +134,18 @@ Licensed under MIT
                                 <div class="row ui raised  segment">
                                     <p class="ui ribbon label large blue">How other users' experiences relate to yours :</p>
 
-                                    <!-- UNDER CONSTRUCTION -->
-                                    <% userswithposts = []; User.all.each do |user|
+                                    <!-- collecteing usrs with posts and showing up to 5 -->
+                                    <% userswithposts = []; 
+                                        User.all.each do |user|
                                          if user.posts.count != 0
-                                             userswithposts.push user.id
+                                             userswithposts.push user
                                          end
                                         end %>
-                                    <% @usr1 = %>
-                                     <% line_chart [
-                                        {name: User.find(userswithposts.sample).username, data: User.find(userswithposts.sample).posts.group_by_week(:created_at).average(:entertainment)},
-                                        {name: User.find(userswithposts.sample).username, data: User.find(userswithposts.sample).posts.group_by_week(:created_at).average(:entertainment)}
-                                    ], colors: ['#696969', '#3366cc'] %>
-
-                                     <!-- UNDER CONSTRUCTION -->
-
-                                    <%= line_chart User.all.map { |user|
+                                     <%= line_chart userswithposts.sample(6).map { |user|
                                         {name: user.username, data: user.posts.group_by_week(:created_at).average(:entertainment)}
                                     }%>
+
+                                     <!-- UNDER CONSTRUCTION styling pending-->
 
                                 </div>
                                 <!-- end of multi line graph -->
@@ -196,7 +174,18 @@ Licensed under MIT
 
 
                         <% else %>
-                            **login to see graphs**
+                           <!-- not logged in view -->
+                            <div style="margin-top: 20px;margin-bottom: 20px; " class="not-logged">
+                                <div class="row justify-content-center">
+                                    <div class="profile-userbuttons" style="margin-right: 20px;">
+                                        <a href="<%= new_user_registration_path %>"><button type="button" class="btn btn-success btn-lg"> SIGN UP </button></a>
+                                    </div>
+                                    <div class="profile-userbuttons">
+                                        <a href="<%= new_user_session_path %>"><button type="button" class="btn btn-success btn-lg"> SIGN IN </button></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- not logged in view -->
                         <% end %>
                     </div>
                 </div>

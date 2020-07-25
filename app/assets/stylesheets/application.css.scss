@@ -20,7 +20,9 @@ $font-family: 'helvetica';
 @import "semantic-ui/collections/menu";
 
 
-
+.not-logged{
+    background-image: url(../images/RAD_APR_2020.jpg);
+}
 //overriding SEMANTIC UI
 .ui.secondary.segment{
     background-color: #5CA4A9 !important ;

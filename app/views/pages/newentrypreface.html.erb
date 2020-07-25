@@ -1,4 +1,6 @@
 <div class="container">
+<!-- logged in  with posts-->
+<% if current_user %>
     <div class="column">
 
     <!-- info text -->
@@ -18,12 +20,18 @@
                           </div>
                         </div>
                     </div>
-                    <div class="item" style="text-align:right">
+                    <div class="item" style="text-align:left">
                         <div class="content">
                           <div class="header">Activity types</div>
+                            <% if current_user && current_user.condition == 1%> 
                           <div class="meta">
-                              <p> You are free to choose activity types from a group of low intensity physical activities. Those cover the whole spectrum of physical activity, from sport to commuting, gardening and even housework. The goal to perfom as many low intensity physical activities as you wish. In the "PLANS" section you can find a sample schedule for activity and we higly encourage you to follow it. It is formed under the guideline of the World Health Organisation for a healhty and active daily lifestyle. </p>
+                              <p> You are free to choose activity types from a group of low intensity physical activities. Those cover the whole spectrum of physical activity, from sport to commuting, gardening and even housework. The goal to perfom as many low intensity physical activities as you wish. In the <b>"PLANS"</b> section you can find a sample schedule for activity and we higly encourage you to follow it. It is formed under the guideline of the World Health Organisation for a healhty and active daily lifestyle. </p>
                           </div>
+                            <% else %>
+                          <div class="meta">
+                              <p> You are free to choose activity types from the following three low intensity physical activities. Walking and commuting (cycling or else) are good examples of everyday low intensity exercise. If those do not cover your preferences, you can choose <b>"Other"</b>as activity type and type in the description more details of what you did. The goal to perfom as many low intensity physical activities as you wish. In the <b>"PLANS"</b> section you can find a sample schedule for activity and we higly encourage you to follow it. It is formed under the guideline of the World Health Organisation for a healhty and active daily lifestyle. </p>
+                          </div>
+                            <% end %>
                           <div class="description">
                             <p></p>
                           </div>
@@ -63,4 +71,18 @@
         </div>
     <!-- button -->
     </div>
+    <% else %>
+    <!-- not logged in view -->
+        <div style="margin-top: 20px;margin-bottom: 20px; " class="not-logged">
+            <div class="row justify-content-center">
+                <div class="profile-userbuttons" style="margin-right: 20px;">
+                    <a href="<%= new_user_registration_path %>"><button type="button" class="btn btn-success btn-lg"> SIGN UP </button></a>
+                </div>
+                <div class="profile-userbuttons">
+                    <a href="<%= new_user_session_path %>"><button type="button" class="btn btn-success btn-lg"> SIGN IN </button></a>
+                </div>
+            </div>
+        </div>
+        <!-- not logged in view -->
+    <% end %>
 </div>

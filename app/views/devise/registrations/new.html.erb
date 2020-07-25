@@ -60,7 +60,9 @@
             </div>
           </div>
     </div>
-
+    
+<!-- visible only for cond==1 -->
+    <% if @condition == 0 %>
     <div class="four inline fields ui segment">
         <div class="field">
             <%= f.label "Would you like to do walking as an activity:" %>
@@ -75,10 +77,13 @@
             <%= f.check_box :commutepref, as: :integer, autofocus: true, class: "ui checkbox" %>
         </div>
 
-  </div>
+    </div>
+    <% end%>
+ <!-- visible only for cond==1 --> 
+    
     <br>
     <div class="actions center">
-        <%= f.submit 'Sign up', :class => 'ui button' %>
+        <%= f.submit 'Sign up', :class => 'ui fluid teal button' %>
     </div>
 
 </div>
