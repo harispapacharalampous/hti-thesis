@@ -11,16 +11,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-    def reg_email
-       RegMailer.reg_email(self).deliver_now
-    end
-
 
     def after_database_authentication
         if self.condition ==1
-            if self.posts.count>=2
-                RegMailer.comp_email(self).deliver_now
-            end
+                RegMailer.comp_email(self).deliver_later(wait: 2.hour)
+                RegMailer.comp_email_2(self).deliver_later(wait: 5.hour)
+                RegMailer.comp_email_3(self).deliver_later(wait: 8.hour)
+                RegMailer.comp_email_4(self).deliver_later(wait: 11.hour)
+                RegMailer.comp_email_5(self).deliver_later(wait: 14.hour)
         end
     end
 

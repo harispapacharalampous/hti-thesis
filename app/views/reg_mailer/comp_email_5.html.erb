@@ -12,14 +12,16 @@
             <h1>Hello <%= @user.username %> !</h1>
         </div>
         <div class="row">
+            <div class="eleven wide column">
             <div class="ui divided items secondary segment">
                 <div class="item">
                         <div class="content">
                           <div class="header ui large">
-                              <p>Looks like you are doing more activities lately ! Continuing like this will put you closer to your goals and improve your overall health and fitness ! </p>
+                              <p>Looks like you are taking care of your body and mind ! You did <%= @user.posts.count %> activities in total the last 2 weeks ! You are already striving towards a healthy lifestyle and starting to form healthy habits. Continuing like this will allow you to improve your overall health and fitness !</p>
                             </div>
                         </div>
                 </div>
+            </div>
             </div>
         </div>
         <div class="row">
