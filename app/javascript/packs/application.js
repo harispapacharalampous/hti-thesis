@@ -12,8 +12,7 @@
 //= require bootstrap
 //= require_tree .
 //= require materialize-sprockets
-//= require simple_form_extension
-//= require simple_form
+
 
 // Loads all Semantic javascripts
 //= require semantic-ui
@@ -32,6 +31,3 @@ require("semantic-ui-sass")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
-import JQuery from 'jquery';
-window.$ = window.jQuery = JQuery;

@@ -266,6 +266,7 @@ DEPENDENCIES
   selenium-webdriver
   semantic-ui-sass
   simple_calendar
+  simple_form
   simple_form_extension
   spring
   spring-watcher-listen (~> 2.0.0)
