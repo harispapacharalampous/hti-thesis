@@ -63,5 +63,4 @@ gem 'simple_form_extension'
 gem 'simple_form'
 gem 'semantic-ui-sass'
 gem "rack", ">= 2.2.3"
-
-gem "pg", "~> 1.2"
+gem "pg"
