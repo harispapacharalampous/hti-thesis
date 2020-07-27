@@ -13,6 +13,7 @@
 //= require_tree .
 //= require materialize-sprockets
 //= require simple_form_extension
+//= require simple_form
 
 // Loads all Semantic javascripts
 //= require semantic-ui
