@@ -62,3 +62,5 @@ gem 'bootstrap', '~> 4.5'
 gem 'simple_form_extension'
 gem 'semantic-ui-sass'
 gem "rack", ">= 2.2.3"
+
+gem "pg", "~> 1.2"
