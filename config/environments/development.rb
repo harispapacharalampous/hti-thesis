@@ -21,6 +21,9 @@ Rails.application.configure do
     authentication:       'plain',
     enable_starttls_auto: true  }
 
+    #suppress deprecation errors
+    ActiveSupport::Deprecation.silenced = true
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
