@@ -122,8 +122,10 @@ GEM
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
-    pg (1.2.3)
+    pg (0.21.0)
     popper_js (1.16.0)
+    postgres (0.8.1)
+      pg (~> 0)
     postgres-pr (0.7.0)
     public_suffix (4.0.5)
     puma (4.3.5)
@@ -257,8 +259,8 @@ DEPENDENCIES
   groupdate
   jbuilder (~> 2.7)
   listen (~> 3.2)
-  pg
   popper_js (~> 1.16)
+  postgres (~> 0.8.1)
   postgres-pr
   puma (~> 4.1)
   rack (>= 2.2.3)
